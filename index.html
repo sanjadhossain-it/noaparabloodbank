@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🩸 Noapara Blood Bank Donor Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- PROFESSIONAL MEDICAL & MODERN CSS --- */
+        :root {
+            /* Primary Red (Medical/Urgency) */
+            --primary: #D32F2F; 
+            --primary-dark: #A92323;
+            /* Secondary Blue (Trust/Medical) */
+            --secondary: #1976D2;
+            /* Backgrounds and Text */
+            --bg: #F8F9FA; /* Light Gray/White BG */
+            --white: #ffffff;
+            --text: #212529; /* Darker text */
+            --gray: #6C757D;
+            --light-gray: #DEE2E6;
+            --radius: 12px;
+            --shadow: 0 6px 15px rgba(0,0,0,0.08);
+            --inner-shadow: 0 1px 3px rgba(0,0,0,0.05) inset;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0; 
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: var(--white);
+            width: 100%;
+            max-width: 550px; 
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto; 
+            padding-bottom: 70px; /* Space for the floating WhatsApp button */
+        }
+
+        /* Header / Branding */
+        .header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            /* Ensures header corners match container if it had margin/padding issues */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--light-gray);
+            color: var(--gray);
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 0.85rem;
+            border-top: 1px solid #ccc;
+            /* Stick footer to the bottom of the container */
+            position: absolute; 
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: var(--light-gray);
+            border-bottom: 1px solid #ccc;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 18px 15px;
+            border: none;
+            background: var(--light-gray);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-dark);
+            border-bottom: 3px solid var(--primary);
+            background: var(--white);
+        }
+
+        /* Form Sections */
+        .section {
+            display: none;
+            padding: 30px 20px; 
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h2 { 
+            margin-top: 0; 
+            color: var(--secondary); 
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Inputs */
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; color: var(--text); }
+        
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 1rem;
+            z-index: 1; /* Ensure icon is above input in old browsers */
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            padding-left: 45px; /* Space for icon */
+            border: 1px solid var(--light-gray);
+            border-radius: var(--radius);
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+            box-shadow: var(--inner-shadow);
+            appearance: none; 
+        }
+        
+        /* Specific padding for elements without an icon */
+        #address, #searchUpdatePhone {
+            padding-left: 15px;
+        }
+        
+        /* Remove icon placeholder if no icon is used in wrapper */
+        .form-group > input, .form-group > select, .form-group > textarea {
+            padding-left: 15px !important;
+        }
+
+        .input-wrapper input, .input-wrapper select {
+            padding-left: 45px !important;
+        }
+
+        /* Select arrow fix */
+        select {
+             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c757d%22%20d%3D%22M287%20197.35l-137.9%20137.9c-2.4%202.4-5.5%203.6-8.7%203.6s-6.3-1.2-8.7-3.6L5.45%20197.35c-4.8-4.8-4.8-12.5%200-17.3l17.3-17.3c4.8-4.8%2012.5-4.8%2017.3%200l106.3%20106.3c2.4%202.4%205.5%203.6%208.7%203.6s6.3-1.2%208.7-3.6l106.3-106.3c4.8-4.8%2012.5-4.8%2017.3%200l17.3%2017.3c4.8%204.8%204.8%2012.5%200%2017.3z%22%2F%3E%3C%2Fsvg%3E');
+             background-repeat: no-repeat;
+             background-position: right 15px top 50%;
+             background-size: 10px auto;
+             padding-right: 35px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2); 
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover { 
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        
+        .btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary { 
+            background: var(--secondary); 
+            margin-top: 10px; 
+        }
+        
+        .btn-secondary:hover {
+            background: #1565C0;
+        }
+
+        /* WhatsApp Button (Floating) */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366; /* WhatsApp Green */
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 100;
+        }
+        
+        /* Update Search Area */
+        #updateFormArea {
+            border-top: 1px solid var(--light-gray);
+            margin-top:20px; 
+            padding-top:20px;
+        }
+        
+        #editName {
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Toast Notification (No change needed) */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 101;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 4.5s;
+        }
+
+        /* Search Results Card */
+        .result-card {
+            border: 1px solid var(--light-gray);
+            padding: 15px;
+            border-left: 5px solid var(--primary);
+            border-radius: var(--radius);
+            margin-bottom: 12px;
+            background: #fff;
+            transition: box-shadow 0.3s;
+        }
+        
+        .result-card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .result-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .result-card span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-hand-holding-heart"></i> Noapara Blood Bank</h1>
+    </div>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('register', this)"><i class="fas fa-user-plus"></i> Register</button>
+        <button class="tab-btn" onclick="openTab('update', this)"><i class="fas fa-edit"></i> Update</button>
+        <button class="tab-btn" onclick="openTab('search', this)"><i class="fas fa-search"></i> Search</button>
+    </div>
+
+    <div id="register" class="section active">
+        <h2>New Donor Registration</h2>
+        <form id="regForm">
+            <div class="form-group">
+                <label>Full Name</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" required oninput="handleInput(this)" placeholder="Enter full name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-calendar-alt"></i>
+                    <input type="date" id="dob" required onchange="checkAge()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-venus-mars"></i>
+                    <select id="gender" required>
+                        <option value="">Select Gender...</option>
+                        <option value="MALE">MALE</option>
+                        <option value="FEMALE">FEMALE</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Blood Group</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-tint"></i>
+                    <select id="bloodgroup" required>
+                        <option value="">Select Group...</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea id="address" rows="2" required oninput="handleInput(this)" placeholder="Enter current address"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Phone (11 Digits, start with 01)</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="phone" maxlength="11" placeholder="01XXXXXXXXX" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Status</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user-check"></i>
+                    <select id="status" required>
+                        <option value="READY TO DONATE">READY TO DONATE</option>
+                        <option value="NOT READY">NOT READY</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn" id="submitBtn">
+                <i class="fas fa-save"></i> Register Donor
+            </button>
+        </form>
+    </div>
+
+    <div id="update" class="section">
+        <h2>Update Contact & Status</h2>
+        <div class="form-group">
+            <label>Search Donor by Old Phone Number</label>
+            <input type="tel" id="searchUpdatePhone" maxlength="11" placeholder="01XXXXXXXXX">
+            <button type="button" class="btn btn-secondary" onclick="findDonorForUpdate()">
+                <i class="fas fa-search"></i> Find Donor
+            </button>
+        </div>
+        
+        <div id="updateFormArea" style="display:none;">
+            <p><strong>Editing:</strong> <span id="editName"></span></p>
+            <div class="form-group">
+                <label>New Phone Number</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-mobile-alt"></i>
+                    <input type="tel" id="newPhone" maxlength="11" placeholder="01XXXXXXXXX">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>New Status</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-sync-alt"></i>
+                    <select id="newStatus">
+                        <option value="READY TO DONATE">READY TO DONATE</option>
+                        <option value="NOT READY">NOT READY</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="btn" onclick="submitUpdate()">
+                <i class="fas fa-cloud-upload-alt"></i> Save Changes
+            </button>
+        </div>
+    </div>
+
+    <div id="search" class="section">
+        <h2>Search Available Donors</h2>
+        <div class="form-group">
+            <label>Select Blood Group</label>
+            <div class="input-wrapper">
+                <i class="fas fa-search-plus"></i>
+                <select id="searchGroup">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="searchDonors()">
+                <i class="fas fa-users"></i> Search Donors
+            </button>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+    
+    <div class="footer">
+        Thank you for visiting our website.
+    </div>
+</div>
+
+<a href="https://wa.me/8801854064777" class="whatsapp-fab" title="Contact via WhatsApp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div id="toast"></div>
+
+<script>
+    // ******************************************************
+    // PASTE YOUR GOOGLE SCRIPT WEB APP URL HERE
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyNMwxKupFf6cIA-SF-_hsKDFgiQG10E-R2agXp5DNOk0SgSGyeojZ6apD_j2k8yHRXUQ/exec"; 
+    // ******************************************************
+
+    // --- Tab Logic ---
+    function openTab(tabName, el) {
+        document.querySelectorAll('.section').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+        document.getElementById(tabName).classList.add('active');
+        // Check if event.currentTarget is available, otherwise use 'el' (passed from new button structure)
+        if (el) {
+            el.classList.add('active');
+        } else if (event.currentTarget) {
+             event.currentTarget.classList.add('active');
+        }
+    }
+    
+    // Fallback for older click handlers that don't pass 'this'
+    // Update old button structure in HTML to pass 'this' if possible: onclick="openTab('register', this)"
+
+    // --- Input Validation & Capitalization ---
+    function handleInput(el) {
+        el.value = el.value.toUpperCase();
+    }
+
+    // --- Age Validation (Toast) ---
+    function checkAge() {
+        const dob = new Date(document.getElementById('dob').value);
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+
+        if (age < 18) {
+            showToast("You are young! Eating healthy makes you a future hero! 🦸‍♂️");
+        }
+    }
+
+    // --- Toast Function ---
+    function showToast(msg) {
+        const x = document.getElementById("toast");
+        x.innerText = msg;
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+    }
+
+    // --- Phone Validation Helper ---
+    function isValidPhone(p) {
+        return p.length === 11 && p.startsWith("01");
+    }
+    
+    // --- REGISTER FUNCTION ---
+    document.getElementById('regForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        const phone = document.getElementById('phone').value;
+
+        if(!isValidPhone(phone)) {
+            showToast("Error: Phone must be 11 digits and start with 01");
+            return;
+        }
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        btn.disabled = true;
+
+        const data = {
+            action: "register",
+            name: document.getElementById('name').value,
+            dob: document.getElementById('dob').value,
+            gender: document.getElementById('gender').value,
+            bloodgroup: document.getElementById('bloodgroup').value,
+            address: document.getElementById('address').value,
+            phone: phone,
+            status: document.getElementById('status').value 
+        };
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(response => {
+            showToast(response.message);
+            document.getElementById('regForm').reset();
+            btn.innerHTML = '<i class="fas fa-save"></i> Register Donor';
+            btn.disabled = false;
+        })
+        .catch(err => {
+            showToast("Connection Error!");
+            btn.innerHTML = '<i class="fas fa-save"></i> Register Donor';
+            btn.disabled = false;
+        });
+    });
+
+    // --- SEARCH FOR UPDATE FUNCTION ---
+    function findDonorForUpdate() {
+        const phone = document.getElementById('searchUpdatePhone').value;
+        const btn = document.querySelector('#update button.btn-secondary'); 
+        
+        if(!isValidPhone(phone)) { showToast("Invalid Phone Format"); return; }
+
+        const originalText = '<i class="fas fa-search"></i> Find Donor';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+        btn.disabled = true;
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify({ action: "findDonor", phone: phone })
+        })
+        .then(res => res.json())
+        .then(data => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+
+            if(data.success) {
+                document.getElementById('updateFormArea').style.display = 'block';
+                document.getElementById('editName').innerText = data.data.name;
+                document.getElementById('newStatus').value = data.data.status;
+                document.getElementById('newPhone').value = phone; 
+                showToast("Donor Found: " + data.data.name);
+            } else {
+                showToast("Donor not found. Check phone number.");
+                document.getElementById('updateFormArea').style.display = 'none';
+            }
+        })
+        .catch(err => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            showToast("Connection failed. Try again.");
+        });
+    }
+
+    // --- SUBMIT UPDATE FUNCTION ---
+    function submitUpdate() {
+        const oldPhone = document.getElementById('searchUpdatePhone').value;
+        const newPhone = document.getElementById('newPhone').value;
+        const newStatus = document.getElementById('newStatus').value; 
+        const btn = document.querySelector('#updateFormArea button.btn');
+
+        if(!isValidPhone(newPhone)) { showToast("New Phone Invalid"); return; }
+        
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        btn.disabled = true;
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify({ 
+                action: "updateDonor", 
+                oldPhone: oldPhone, 
+                newPhone: newPhone, 
+                newStatus: newStatus 
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            showToast(data.message);
+            btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Save Changes';
+            btn.disabled = false;
+
+            if(data.success) {
+                document.getElementById('updateFormArea').style.display = 'none';
+                document.getElementById('searchUpdatePhone').value = "";
+            }
+        });
+    }
+
+    // --- SEARCH BY GROUP FUNCTION ---
+    function searchDonors() {
+        const group = document.getElementById('searchGroup').value;
+        const resultArea = document.getElementById('searchResults');
+        const btn = document.querySelector('#search .btn-secondary');
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+        btn.disabled = true;
+        resultArea.innerHTML = ""; // Clear previous results
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify({ action: "searchGroup", group: group })
+        })
+        .then(res => res.json())
+        .then(data => {
+            btn.innerHTML = '<i class="fas fa-users"></i> Search Donors';
+            btn.disabled = false;
+            resultArea.innerHTML = "";
+            
+            if(data.data && data.data.length > 0) {
+                data.data.forEach(donor => {
+                    resultArea.innerHTML += `
+                        <div class="result-card">
+                            <strong>${donor.name}</strong> (${donor.bloodgroup} <span style="color: ${donor.status === 'READY TO DONATE' ? 'green' : 'red'};">${donor.status}</span>)<br>
+                            <span class="small-info">
+                                <i class="fas fa-map-marker-alt"></i> ${donor.address}<br>
+                                <i class="fas fa-phone-square-alt"></i> Phone: <a href="tel:${donor.phone}">${donor.phone}</a>
+                            </span>
+                        </div>
+                    `;
+                });
+                showToast(`${data.data.length} donors found for ${group}.`);
+            } else {
+                resultArea.innerHTML = `<div class="result-card" style="border-left-color: var(--secondary);">No donors found for **${group}** at this time.</div>`;
+                showToast(`No donors found for ${group}.`);
+            }
+        })
+        .catch(err => {
+            btn.innerHTML = '<i class="fas fa-users"></i> Search Donors';
+            btn.disabled = false;
+            showToast("Search failed. Try again.");
+        });
+    }
+</script>
+
+</body>
+</html>
