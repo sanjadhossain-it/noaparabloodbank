@@ -5,7 +5,49 @@
     <meta name="google-site-verification" content="GktHNwzZuztiJucJxPKL4EeEKmU2nCHuqr9RO3F5jC0" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🩸 Noapara Blood Bank</title>
+    <title>Noapara Blood Bank | Emergency Donors in Raozan & Noapara</title>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "name": "Noapara Blood Bank",
+  "url": "https://sanjadhossain-it.github.io/noaparabloodbank/",
+  "logo": "https://i.ibb.co/fYVnDvZS/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+8801601764777",
+    "contactType": "emergency",
+    "areaServed": "Noapara, Raozan",
+    "availableLanguage": ["Bengali", "English"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Raozan",
+    "addressRegion": "Chattogram",
+    "addressCountry": "BD"
+  }
+}
+</script>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/noaparabloodbank/sitemap.xml" />
+    <meta name="description"
+        content="Noapara Blood Bank helps find emergency blood donors in Noapara, raozan. Register as a blood donor or search available donors instantly.">
+
+    <meta name="keywords"
+        content="Noapara blood bank, Noapara blood donor, emergency blood Noapara, blood donor noapara raozan">
+
+    <meta name="author" content="Noapara Blood Bank">
+    <meta name="robots" content="index, follow">
+
+    <!-- Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph (Facebook, WhatsApp) -->
+    <meta property="og:title" content="Noapara Blood Bank – Emergency Blood Donor Service">
+    <meta property="og:description" content="Find emergency blood donors in Noapara fast. Free blood donor registry.">
+    <meta property="og:url" content="https://sanjadhossain-it.github.io/noaparabloodbank/">
+    <meta property="og:type" content="website">
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -47,7 +89,7 @@
 
         /* --- Glassmorphism Header --- */
         .header {
-            position: sticky;
+            position: relative;
             top: 0;
             z-index: 1000;
             background: rgba(229, 57, 53, 0.85);
@@ -103,8 +145,9 @@
             padding: 10px 15px;
             gap: 10px;
             background: transparent;
-            position: sticky;
-            top: 75px;
+            position: relative;
+            top: 0;
+            /* Reset top position */
             z-index: 999;
         }
 
@@ -281,6 +324,13 @@
             text-decoration: none;
         }
 
+        /* This class will be toggled by JavaScript */
+        .whatsapp-fab.fab-hidden {
+            opacity: 0;
+            transform: translateY(100px) scale(0);
+            pointer-events: none;
+        }
+
         #toast {
             visibility: hidden;
             position: fixed;
@@ -299,6 +349,26 @@
         #toast.show {
             visibility: visible;
             animation: fadeIn 0.5s;
+        }
+
+        /* Force placeholder visibility on mobile */
+        input[type="date"]::before {
+            content: attr(placeholder);
+            width: 100%;
+            color: var(--text-muted);
+        }
+
+        input[type="date"]:focus::before,
+        input[type="date"]:valid::before {
+            display: none;
+            content: "";
+        }
+
+        /* Specific fix for iOS to ensure placeholder color is visible */
+        input[type="date"] {
+            -webkit-appearance: none;
+            min-height: 50px;
+            /* Ensures the box is tappable */
         }
 
         @keyframes fadeIn {
@@ -434,9 +504,23 @@
             <div id="searchResults"></div>
         </div>
 
+        <div class="section active"
+            style="background: rgba(255,255,255,0.5); margin: 20px; border-radius: var(--radius); padding: 20px; border: 1px solid rgba(229, 57, 53, 0.1);">
+            <h2 style="color: var(--primary-dark); font-size: 1.1rem; margin-top: 0;">About Noapara Blood Bank</h2>
+            <p style="font-size: 0.85rem; color: var(--text-main);">
+                <strong>Noapara Blood Bank</strong> is a non-profit initiative helping people in <strong>Noapara,
+                    Raozan, and Chattogram</strong> find life-saving blood donors quickly.
+            </p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+                Whether you are looking for <strong>A+, B+, O+, or rare AB- blood groups</strong>, our real-time
+                database connects you with local volunteers. We focus on community safety; therefore, female donor
+                contact details are kept private and managed by our administration.
+            </p>
+        </div>
+
         <div class="footer">
             © 2025 Noapara Blood Bank<br>
-            <span style="font-size: 0.7rem; opacity: 0.7;">Thank you for your support!Sanjad Hossain</span>
+            <span style="font-size: 0.7rem; opacity: 0.7;">Thank you for your support! | Sanjad Hossain</span>
         </div>
     </div>
 
@@ -610,7 +694,29 @@
                     adsBox.innerHTML += `<div class="ad-card"><a href="${ad.url}" target="_blank"><img src="${ad.image}"></a></div>`;
                 });
             });
+
+        // --- WhatsApp FAB Scroll Behavior ---
+        let lastScrollTop = 0;
+        const whatsappBtn = document.querySelector('.whatsapp-fab');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 1. Hide when scrolling down & past 100px
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                whatsappBtn.classList.add('fab-hidden');
+            }
+            // 2. Show when scrolling up
+            else {
+                whatsappBtn.classList.remove('fab-hidden');
+            }
+
+            // Update last scroll position (ensuring no negative values on mobile bounce)
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, { passive: true });
     </script>
+
+
 
 </body>
 
