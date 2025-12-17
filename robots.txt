@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sanjadhossain-it.github.io/noaparabloodbank/sitemap.xml
