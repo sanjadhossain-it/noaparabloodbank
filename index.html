@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Noapara Blood Bank | Emergency Donors in Raozan & Noapara</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,14 +39,11 @@
     <meta name="author" content="Noapara Blood Bank">
     <meta name="robots" content="index, follow">
 
-    <!-- Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph (Facebook, WhatsApp) -->
     <meta property="og:title" content="Noapara Blood Bank – Emergency Blood Donor Service">
     <meta property="og:description" content="Find emergency blood donors in Noapara fast. Free blood donor registry.">
     <meta property="og:url" content="https://sanjadhossain-it.github.io/noaparabloodbank/">
     <meta property="og:type" content="website">
-    <!-- Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -417,7 +415,8 @@
                 </div>
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <input type="date" id="dob" required>
+                    <input type="text" id="dob" placeholder="Select Your Birth Date" onfocus="(this.type='date')"
+                        onblur="if(!this.value)this.type='text'" required>
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
@@ -506,15 +505,35 @@
 
         <div class="section active"
             style="background: rgba(255,255,255,0.5); margin: 20px; border-radius: var(--radius); padding: 20px; border: 1px solid rgba(229, 57, 53, 0.1);">
-            <h2 style="color: var(--primary-dark); font-size: 1.1rem; margin-top: 0;">About Noapara Blood Bank</h2>
-            <p style="font-size: 0.85rem; color: var(--text-main);">
-                <strong>Noapara Blood Bank</strong> is a non-profit initiative helping people in <strong>Noapara,
-                    Raozan, and Chattogram</strong> find life-saving blood donors quickly.
+            <h2 style="color: var(--primary-dark); font-size: 1.1rem; margin-top: 0;">নোয়াপাড়া ব্লাড ব্যাংক সম্পর্কে</h2>
+            <p style="font-size: 0.85rem; color: var(--text-m);">
+                <strong>নোয়াপাড়া ব্লাড ব্যাংক</strong> কটি সম্পূর্ণ অলাভজনক ও মানবিক উদ্যোগ,যার লক্ষ্য নোয়াপাড়া, রাউজান ও চট্টগ্রাম
+                অঞ্চলের মানুষের জন্য দ্রুত ও নির্ভরযোগ্য রক্তদাতা খুঁজে দেওয়া। জরুরি মুহূর্তে যেন একটি জীবনও রক্তের অভাবে ঝরে না যায়—এই বিশ্বাস থেকেই আমাদের পথচলা।
+                
             </p>
             <p style="font-size: 0.85rem; color: var(--text-muted);">
-                Whether you are looking for <strong>A+, B+, O+, or rare AB- blood groups</strong>, our real-time
-                database connects you with local volunteers. We focus on community safety; therefore, female donor
-                contact details are kept private and managed by our administration.
+                আপনি যদি <strong>A+, B+, O+, কিংবা বিরল AB-</strong>রক্তের ডোনার খুঁজে থাকেন, তাহলে আমাদের
+                রিয়েল-টাইম ব্লাড ডোনার
+                ডাটাবেস আপনাকে মুহূর্তের মধ্যেই নিকটবর্তী স্বেচ্ছাসেবী রক্তদাতার সঙ্গে সংযুক্ত করে।</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">আমাদের এই উদ্যোগের মূল শক্তি হলো মানবিকতা, বিশ্বাস ও
+                কমিউনিটি নিরাপত্তা। বিশেষ করে নারী রক্তদাতাদের</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">সম্মান ও সুরক্ষাকে সর্বোচ্চ গুরুত্ব দিয়ে তাদের
+                যোগাযোগের তথ্য সরাসরি প্রকাশ করা হয় না; বরং আমাদের</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">প্রশাসনিক টিমের মাধ্যমে নিরাপদ ও দায়িত্বশীলভাবে
+                যোগাযোগ ব্যবস্থাপনা করা হয়।</p>
+
+            <ul>
+                <li>👉 জরুরি রক্তের প্রয়োজন,</li>
+                <li>👉 নির্ভরযোগ্য রক্তদাতা খোঁজা,</li>
+                <li>👉 স্থানীয় ব্লাড ডোনার সার্ভিস,</li>
+                <li>👉 স্বেচ্ছাসেবী রক্তদান প্ল্যাটফর্ম—</li>
+            </ul>
+
+
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+            এই সব কিছুর জন্যই আমরা গড়ে তুলেছি একটি বিশ্বাসযোগ্য ও মানবিক অনলাইন ব্লাড ব্যাংক সিস্টেম, যেখানে
+            প্রতিটি জীবন অমূল্য।
+            আজই যুক্ত হোন—কারণ আপনার এক ফোঁটা রক্তই হতে পারে কারও নতুন জীবনের শুরু। 🩸❤️
             </p>
         </div>
 
