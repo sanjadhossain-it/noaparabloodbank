@@ -109,15 +109,8 @@
         }
 
         @keyframes pulse-border {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
         }
 
         .brand-text h1 {
@@ -153,38 +146,7 @@
             border: 1px solid #FFE4E6;
         }
 
-        .category-bar {
-            background: #F8FAFC;
-            padding: 10px 20px;
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            border-top: 1px solid #F1F5F9;
-        }
-
-        .category-bar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .cat-link {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .cat-link i {
-            font-size: 0.8rem;
-            color: var(--accent);
-        }
-
-        /* --- FIXED IMAGE SLIDER CSS --- */
+        /* --- HERO SLIDER --- */
         .hero-slider {
             width: 100%;
             height: 260px;
@@ -196,14 +158,12 @@
         .slider-wrapper {
             display: flex;
             width: 300%;
-            /* 3 images = 300% */
             height: 100%;
             transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
         .slide {
             width: 33.3333%;
-            /* Each slide is 1/3 of the 300% wrapper */
             height: 100%;
             position: relative;
         }
@@ -222,11 +182,9 @@
             background: linear-gradient(0deg, rgba(15, 23, 42, 0.6) 0%, transparent 60%);
         }
 
-        /* Slide Indicators (Dots) */
         .slider-dots {
             position: absolute;
             bottom: 45px;
-            /* Above the action hub */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -289,6 +247,7 @@
             color: var(--secondary);
         }
 
+        /* --- HORIZONTAL SCROLL --- */
         .horizontal-scroll {
             display: flex;
             gap: 12px;
@@ -297,9 +256,7 @@
             scrollbar-width: none;
         }
 
-        .horizontal-scroll::-webkit-scrollbar {
-            display: none;
-        }
+        .horizontal-scroll::-webkit-scrollbar { display: none; }
 
         .diag-pill {
             min-width: 120px;
@@ -334,6 +291,7 @@
             display: block;
         }
 
+        /* --- FILTER TABS --- */
         .filter-tabs {
             display: flex;
             gap: 10px;
@@ -341,6 +299,8 @@
             padding: 5px 20px 20px;
             scrollbar-width: none;
         }
+
+        .filter-tabs::-webkit-scrollbar { display: none; }
 
         .tab {
             padding: 10px 22px;
@@ -351,6 +311,7 @@
             color: var(--text-muted);
             white-space: nowrap;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         .tab.active {
@@ -358,8 +319,10 @@
             color: white;
         }
 
+        /* --- DOCTOR CARDS --- */
         .doctor-container {
             padding: 0 20px 30px;
+            min-height: 200px;
         }
 
         .doc-card {
@@ -369,6 +332,12 @@
             margin-bottom: 20px;
             border: 1px solid #f1f5f9;
             box-shadow: var(--shadow-sm);
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .doc-header {
@@ -397,11 +366,20 @@
             color: var(--secondary);
         }
 
-        .doc-meta p {
-            margin: 3px 0;
-            font-size: 0.75rem;
+        .doc-degree {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin: 2px 0 4px;
+            line-height: 1.3;
+        }
+
+        .doc-specialty-tag {
+            font-size: 0.7rem;
             color: var(--accent);
-            font-weight: 700;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .schedule-grid {
@@ -440,6 +418,14 @@
             display: block;
         }
 
+        .loader-text {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
         .site-footer {
             background: #FFFFFF;
             padding: 60px 20px 30px;
@@ -528,10 +514,7 @@
             margin-bottom: 25px;
         }
 
-        .social-row a {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
+        .social-row a { color: var(--text-muted); font-size: 1.2rem; }
 
         .footer-bottom {
             text-align: center;
@@ -551,20 +534,11 @@
 <body>
 
     <header class="app-header">
-        <div class="header-utility">
-            <div class="utility-item">
-                <i class="fas fa-clock"></i> 24/7 EMERGENCY OPEN
-            </div>
-            <div class="utility-item">
-                <i class="fas fa-location-dot"></i> NOAPARA, RAOZAN
-            </div>
-        </div>
+        
 
         <nav class="main-nav">
             <div class="brand-identity">
-                <div class="logo-container">
-                    <i class="fas fa-hand-holding-medical"></i>
-                </div>
+                <div class="logo-container"><i class="fas fa-hand-holding-medical"></i></div>
                 <div class="brand-text">
                     <h1>MODERN HOSPITAL</h1>
                     <span>RAOZAN MEDICAL CENTER</span>
@@ -577,21 +551,13 @@
                 </a>
             </div>
         </nav>
-
-      
     </header>
 
     <div class="hero-slider">
         <div class="slider-wrapper" id="slider">
-            <div class="slide"><img
-                    src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000">
-            </div>
-            <div class="slide"><img
-                    src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1000">
-            </div>
-            <div class="slide"><img
-                    src="https://images.unsplash.com/photo-1538108197394-a213c15d9ec6?auto=format&fit=crop&w=1000">
-            </div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1000"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1538108197394-a213c15d9ec6?auto=format&fit=crop&w=1000"></div>
         </div>
         <div class="slider-dots">
             <div class="dot active"></div>
@@ -605,7 +571,7 @@
             <i class="fas fa-truck-medical"></i>
             <span>Ambulance</span>
         </a>
-        <a href="https://maps.google.com" class="action-card">
+        <a href="#" class="action-card">
             <i class="fas fa-location-arrow"></i>
             <span>Directions</span>
         </a>
@@ -613,70 +579,23 @@
 
     <div id="diagnostics" class="section-label">Diagnostic Excellence</div>
     <div class="horizontal-scroll">
-        <a href="#" class="diag-pill">
-            <i class="fas fa-vial"></i>
-            <span>Pathology</span>
-            <span class="diag-call">Tests Price</span>
-        </a>
-        <a href="#" class="diag-pill">
-            <i class="fas fa-x-ray"></i>
-            <span>Digital X-Ray</span>
-            <span class="diag-call">Tests Price</span>
-        </a>
-        <a href="#" class="diag-pill">
-            <i class="fas fa-heart-pulse"></i>
-            <span>Digital ECG</span>
-            <span class="diag-call">Tests Price</span>
-        </a>
-        <a href="#" class="diag-pill">
-            <i class="fas fa-baby"></i>
-            <span>4D USG</span>
-            <span class="diag-call">Tests Price</span>
-        </a>
+        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests Price</span></a>
     </div>
 
     <div id="doctors" class="section-label">Specialist Doctors</div>
-    <div class="filter-tabs">
-        <div class="tab active" onclick="filterDocs('all', this)">All Specialists</div>
-        <div class="tab" onclick="filterDocs('Medicine', this)">Medicine</div>
-        <div class="tab" onclick="filterDocs('Gynae', this)">Gynae</div>
-        <div class="tab" onclick="filterDocs('Ortho', this)">Orthopedic</div>
+    <div class="filter-tabs" id="categoryTabs">
+        <div class="tab active" onclick="fetchAndFilter('All', this)">All Specialists</div>
+        <div class="tab" onclick="fetchAndFilter('Medicine', this)">Medicine</div>
+        <div class="tab" onclick="fetchAndFilter('Gynae', this)">Gynae</div>
+        <div class="tab" onclick="fetchAndFilter('Orthopedic', this)">Orthopedic</div>
+        <div class="tab" onclick="fetchAndFilter('Pediatrics', this)">Pediatrics</div>
     </div>
 
-    <div class="doctor-container">
-        <article class="doc-card" data-cat="Medicine">
-            <div class="doc-header">
-                <div class="doc-avatar"><i class="fas fa-user-md"></i></div>
-                <div class="doc-meta">
-                    <h3>Dr. Ahmed Bin Yusuf</h3>
-                    <p>Internal Medicine Specialist</p>
-                </div>
-            </div>
-            <div class="schedule-grid">
-                <div class="s-item"><b>Days</b><span>Sat, Mon, Wed</span></div>
-                <div class="s-item"><b>Timing</b><span>4 PM - 8 PM</span></div>
-                <div class="s-item"><b>Room</b><span>Room 204</span></div>
-                <div class="s-item"><b>Fee</b><span>৳ 600</span></div>
-            </div>
-            <a href="tel:017XXXXXXXX" class="btn-booking">Book Appointment</a>
-        </article>
-
-        <article class="doc-card" data-cat="Gynae">
-            <div class="doc-header">
-                <div class="doc-avatar"><i class="fas fa-user-nurse"></i></div>
-                <div class="doc-meta">
-                    <h3>Dr. Sarah Sultana</h3>
-                    <p>MBBS, BCS (Gynae & Obs)</p>
-                </div>
-            </div>
-            <div class="schedule-grid">
-                <div class="s-item"><b>Days</b><span>Sun, Tue, Thu</span></div>
-                <div class="s-item"><b>Timing</b><span>10 AM - 1 PM</span></div>
-                <div class="s-item"><b>Room</b><span>Room 105</span></div>
-                <div class="s-item"><b>Fee</b><span>৳ 500</span></div>
-            </div>
-            <a href="tel:017XXXXXXXX" class="btn-booking">Book Appointment</a>
-        </article>
+    <div class="doctor-container" id="doctorContainer">
+        <div class="loader-text">Loading specialist profiles...</div>
     </div>
 
     <footer class="site-footer">
@@ -688,17 +607,11 @@
         <div class="footer-contact-grid">
             <a href="tel:017XXXXXXXX" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-headset"></i></div>
-                <div class="content">
-                    <b>Hospital Hotline</b>
-                    <span>+880 17XX-XXXXXX</span>
-                </div>
+                <div class="content"><b>Hospital Hotline</b><span>+880 17XX-XXXXXX</span></div>
             </a>
             <a href="#" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
-                <div class="content">
-                    <b>Our Location</b>
-                    <span>Patherhat, Noapara, Raozan</span>
-                </div>
+                <div class="content"><b>Our Location</b><span>Patherhat, Noapara, Raozan</span></div>
             </a>
         </div>
 
@@ -722,17 +635,17 @@
     </footer>
 
     <script>
-        // FIXED HERO SLIDER LOGIC
+        // --- 1. CONFIGURATION ---
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec"; // REPLACE THIS
+
+        // --- 2. HERO SLIDER LOGIC ---
         let currentSlide = 0;
         const totalSlides = 3;
         const sliderWrapper = document.getElementById('slider');
         const dots = document.querySelectorAll('.dot');
 
         function updateSlider() {
-            // Move wrapper based on percentage (100 / total slides = 33.333)
             sliderWrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
-
-            // Update dots
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
@@ -743,20 +656,78 @@
             updateSlider();
         }, 4500);
 
-        // Doctor Category Filtering
-        function filterDocs(cat, btn) {
+        // --- 3. DYNAMIC DOCTOR FETCHING & FILTERING ---
+        async function fetchAndFilter(category, btn) {
+            // UI Update: Toggle active tab
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            const cards = document.querySelectorAll('.doc-card');
-            cards.forEach(card => {
-                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-                    card.style.display = 'block';
+            if(btn) btn.classList.add('active');
+
+            const container = document.getElementById('doctorContainer');
+            container.innerHTML = '<div class="loader-text"><i class="fas fa-spinner fa-spin"></i> Finding doctors...</div>';
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "getDoctors",
+                        category: category // Pass category to Google Script
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    renderDoctors(result.data);
                 } else {
-                    card.style.display = 'none';
+                    container.innerHTML = '<div class="loader-text">No doctors found in this category.</div>';
                 }
+            } catch (error) {
+                container.innerHTML = '<div class="loader-text">Error loading data. Please check connection.</div>';
+                console.error("Fetch Error:", error);
+            }
+        }
+
+        function renderDoctors(doctors) {
+            const container = document.getElementById('doctorContainer');
+            container.innerHTML = "";
+
+            if (doctors.length === 0) {
+                container.innerHTML = '<div class="loader-text">No specialists currently available.</div>';
+                return;
+            }
+
+            doctors.forEach(doc => {
+                const card = document.createElement('article');
+                card.className = 'doc-card';
+                
+                // Set avatar icon based on gender/specialty if needed, or keep default
+                let icon = doc.category === 'Gynae' ? 'fa-user-nurse' : 'fa-user-md';
+
+                card.innerHTML = `
+                    <div class="doc-header">
+                        <div class="doc-avatar"><i class="fas ${icon}"></i></div>
+                        <div class="doc-meta">
+                            <h3>${doc.name}</h3>
+                            <div class="doc-degree">${doc.degree}</div>
+                            <div class="doc-specialty-tag">${doc.specialty}</div>
+                        </div>
+                    </div>
+                    <div class="schedule-grid">
+                        <div class="s-item"><b>Days</b><span>${doc.days}</span></div>
+                        <div class="s-item"><b>Timing</b><span>${doc.timing}</span></div>
+                        <div class="s-item"><b>Room</b><span>${doc.room}</span></div>
+                        <div class="s-item"><b>Fee</b><span>৳ ${doc.fee}</span></div>
+                    </div>
+                    <a href="tel:${doc.phone}" class="btn-booking">Book Appointment</a>
+                `;
+                container.appendChild(card);
             });
         }
+
+        // --- 4. INITIAL LOAD ---
+        window.onload = () => {
+            fetchAndFilter('All');
+        };
     </script>
 </body>
-
 </html>
