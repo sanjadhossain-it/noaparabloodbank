@@ -190,7 +190,10 @@
             border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 20px;
             padding: 20px; margin-bottom: 15px; box-shadow: var(--card-shadow);
         }
-        .footer { padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+        .footer { padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.8rem; line-height: 1.8; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; margin: 0 5px; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
         .whatsapp-fab {
             position: fixed; bottom: 25px; right: 20px; background: #25D366; color: white;
             width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
@@ -216,7 +219,7 @@
         </a>
         <div class="nav-links">
             <a href="index.html" class="nav-link active">HOME</a>
-            <a href="privacy.html" class="nav-link">PRIVACY</a>
+            <a href="emergency.html" class="nav-link">EMERGENCY</a>
             <a href="about.html" class="nav-link">ABOUT</a>
             <a href="contact.html" class="nav-link">CONTACT</a>
         </div>
@@ -314,6 +317,9 @@
 
         <div class="footer">
             © 2025 Noapara Blood Bank<br>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
             <span style="font-size: 0.7rem; opacity: 0.7;">Developed by Sanjad Hossain</span>
         </div>
     </div>
@@ -322,6 +328,7 @@
     <div id="toast"></div>
 
     <script>
+        // ... (Same script logic as before) ...
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec";
 
         function openTab(name, el) {
