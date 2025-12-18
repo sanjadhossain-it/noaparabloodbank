@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us | Noapara Blood Bank</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E53935;
+            --primary-dark: #C62828;
+            --whatsapp: #25D366;
+            --text-main: #1C1E21;
+            --text-muted: #65676B;
+            --radius: 20px;
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #ffebee 100%);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+        }
+
+        /* --- SHARED GLASS NAVIGATION --- */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            padding: 10px 0;
+        }
+
+        .nav-brand {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; margin-bottom: 12px; text-decoration: none;
+        }
+        .nav-brand img { height: 30px; border-radius: 6px; }
+        .nav-brand span { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+
+        .nav-links { display: flex; justify-content: center; gap: 8px; }
+        .nav-link {
+            text-decoration: none; color: var(--text-main); font-size: 0.65rem;
+            font-weight: 700; padding: 8px 10px; border-radius: 8px; text-transform: uppercase;
+        }
+        .nav-link.active { background: var(--primary); color: white; }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--glass);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- CONTACT CONTENT --- */
+        .contact-header {
+            text-align: center;
+            padding: 30px 10px;
+        }
+        .contact-header h1 { font-weight: 800; font-size: 1.8rem; margin: 0; color: var(--primary-dark); }
+        .contact-header p { color: var(--text-muted); font-size: 0.95rem; margin-top: 8px; }
+
+        .contact-method {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .contact-method:active { transform: scale(0.98); background: #fafafa; }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .bg-red { background: rgba(229, 57, 53, 0.1); color: var(--primary); }
+        .bg-green { background: rgba(37, 211, 102, 0.1); color: var(--whatsapp); }
+        .bg-blue { background: rgba(30, 136, 229, 0.1); color: #1E88E5; }
+
+        .method-info b { display: block; font-size: 1rem; color: var(--text-main); }
+        .method-info span { font-size: 0.85rem; color: var(--text-muted); }
+
+        .emergency-banner {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .emergency-banner h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+        .emergency-banner p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .social-circle {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .social-circle:hover { color: var(--primary); }
+
+        .footer-note {
+            text-align: center;
+            padding: 40px 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-brand">
+            <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png" alt="Logo">
+            <span>Noapara Blood Bank</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="privacy.html" class="nav-link">PRIVACY</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link active">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="contact-header">
+            <h1>Reach Out</h1>
+            <p>We are available 24/7 for blood emergencies.</p>
+        </div>
+
+        <div class="emergency-banner">
+            <h3><i class="fas fa- ambulance"></i> Emergency Only</h3>
+            <p>If you need blood urgently, please call us directly for the fastest response.</p>
+        </div>
+
+        <a href="tel:+8801601764777" class="contact-method">
+            <div class="icon-box bg-red"><i class="fas fa-phone-alt"></i></div>
+            <div class="method-info">
+                <b>Call Helpline</b>
+                <span>+880 1601-764777</span>
+            </div>
+        </a>
+
+        <a href="https://wa.me/8801601764777" class="contact-method">
+            <div class="icon-box bg-green"><i class="fab fa-whatsapp"></i></div>
+            <div class="method-info">
+                <b>WhatsApp Chat</b>
+                <span>Send a message instantly</span>
+            </div>
+        </a>
+
+        <a href="mailto:info.noaparabloodbank@gmail.com" class="contact-method">
+            <div class="icon-box bg-blue"><i class="fas fa-envelope"></i></div>
+            <div class="method-info">
+                <b>Email Address</b>
+                <span>info.noaparabloodbank@gmail.com</span>
+            </div>
+        </a>
+
+        <div class="contact-method">
+            <div class="icon-box" style="background: rgba(0,0,0,0.05); color: #555;"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="method-info">
+                <b>Our Location</b>
+                <span>Noapara, Raozan, Chattogram</span>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.facebook.com/groups/noaparabloodbank" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-circle"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div class="footer-note">
+            © 2025 Noapara Blood Bank <br>
+            Helping lives since 2017.
+        </div>
+
+    </div>
+
+</body>
+</html>

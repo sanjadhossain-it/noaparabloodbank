@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Us | Noapara Blood Bank</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #E53935;
+            --primary-dark: #C62828;
+            --secondary: #1E88E5;
+            --text-main: #1C1E21;
+            --text-muted: #65676B;
+            --radius: 20px;
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #ffebee 100%);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: var(--text-main);
+        }
+
+        /* --- SHARED GLASS NAVIGATION --- */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            padding: 10px 0;
+        }
+
+        .nav-brand {
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; margin-bottom: 12px; text-decoration: none;
+        }
+
+        .nav-brand img { height: 30px; border-radius: 6px; }
+        .nav-brand span { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+
+        .nav-links { display: flex; justify-content: center; gap: 8px; }
+        .nav-link {
+            text-decoration: none; color: var(--text-main); font-size: 0.65rem;
+            font-weight: 700; padding: 8px 10px; border-radius: 8px; text-transform: uppercase;
+        }
+        .nav-link.active { background: var(--primary); color: white; }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--glass);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- MODERN ABOUT CONTENT --- */
+        .hero-section {
+            text-align: center;
+            padding: 30px 10px;
+            background: linear-gradient(rgba(229, 57, 53, 0.05), rgba(229, 57, 53, 0));
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+        }
+
+        .hero-section i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 10px rgba(229, 57, 53, 0.2));
+        }
+
+        .hero-section h1 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--primary-dark);
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(229, 57, 53, 0.1);
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .stat-card p {
+            margin: 5px 0 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--primary);
+        }
+
+        .info-card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+
+        .info-card p {
+            line-height: 1.7;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(229, 57, 53, 0.1);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-text b { display: block; font-size: 0.9rem; }
+        .feature-text span { font-size: 0.8rem; color: var(--text-muted); }
+
+        .footer-note {
+            text-align: center;
+            padding: 30px 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-join {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 700;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="glass-nav">
+        <a href="index.html" class="nav-brand">
+            <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png" alt="Logo">
+            <span>Noapara Blood Bank</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="privacy.html" class="nav-link">PRIVACY</a>
+            <a href="about.html" class="nav-link active">ABOUT</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="hero-section">
+            <i class="fas fa-heartbeat"></i>
+            <h1>Saving Lives Together</h1>
+            <p>Every drop counts. Every donor is a hero.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Donors</p>
+            </div>
+            <div class="stat-card">
+                <h3>24/7</h3>
+                <p>Support</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+            <p>
+                Founded in Noapara, Raozan, our mission is to digitize blood donation. We bridge the gap between emergency seekers and voluntary donors through a fast, transparent, and secure platform. 
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h2><i class="fas fa-check-circle"></i> Why Choose Us?</h2>
+            
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <div class="feature-text">
+                    <b>Instant Search</b>
+                    <span>Find donors in Noapara area within seconds.</span>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                <div class="feature-text">
+                    <b>Privacy Protection</b>
+                    <span>Female donor contacts are kept highly secure.</span>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="feature-text">
+                    <b>100% Free</b>
+                    <span>We are a non-profit humanitarian organization.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card" style="border-left-color: var(--secondary);">
+            <h2 style="color: var(--secondary);"><i class="fas fa-users"></i> The Community</h2>
+            <p>
+                Noapara Blood Bank is more than a website; it’s a community of heroes. We encourage everyone to register and keep their status updated to help during critical hours.
+            </p>
+            <a href="index.html" class="btn-join">Become a Donor Today</a>
+        </div>
+
+        <div class="footer-note">
+            Developed with ❤️ by <b>Sanjad Hossain</b><br>
+            For the people of Noapara & Raozan.
+        </div>
+
+    </div>
+
+</body>
+</html>
