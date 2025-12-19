@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Raozan Modern Hospital | Premium Healthcare Noapara</title>
+    <title>Pioneer Hospital and Diagnostic Center LTD | Premium Healthcare Noapara</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Ndrx7JS9/pionnerlogo.webp">
     <meta name="description"
         content="Official portal for Raozan Modern Hospital. Specialized doctors, advanced diagnostics, and 24/7 emergency services in Raozan.">
 
@@ -26,6 +27,7 @@
             --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
             --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             --glass: rgba(255, 255, 255, 0.9);
+            --pulse_color: rgba(0, 141, 177, 0.3);
         }
 
         body {
@@ -88,14 +90,14 @@
             position: relative;
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #E11D48 0%, #9F1239 100%);
-            border-radius: 14px;
+            background: linear-gradient(135deg, #00c0c7 0%, #001d9e 100%);
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 1.3rem;
-            box-shadow: 0 8px 15px rgba(225, 29, 72, 0.25);
+            box-shadow: 0 8px 15px rgba(38, 0, 255, 0.25);
         }
 
         .logo-container::after {
@@ -103,14 +105,21 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border-radius: 14px;
-            border: 2px solid var(--primary);
+            border-radius: 0px;
+            border: 2px solid var(--pulse_color);
             animation: pulse-border 2s infinite;
         }
 
         @keyframes pulse-border {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.3); opacity: 0; }
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
         }
 
         .brand-text h1 {
@@ -119,7 +128,7 @@
             font-weight: 900;
             color: var(--secondary);
             line-height: 0.9;
-            letter-spacing: -0.8px;
+            letter-spacing: -0.5px;
         }
 
         .brand-text span {
@@ -127,7 +136,7 @@
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: -0.1px;
             margin-top: 4px;
             display: block;
         }
@@ -256,7 +265,9 @@
             scrollbar-width: none;
         }
 
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
 
         .diag-pill {
             min-width: 120px;
@@ -300,7 +311,9 @@
             scrollbar-width: none;
         }
 
-        .filter-tabs::-webkit-scrollbar { display: none; }
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
 
         .tab {
             padding: 10px 22px;
@@ -336,8 +349,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .doc-header {
@@ -514,7 +534,10 @@
             margin-bottom: 25px;
         }
 
-        .social-row a { color: var(--text-muted); font-size: 1.2rem; }
+        .social-row a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
 
         .footer-bottom {
             text-align: center;
@@ -528,18 +551,20 @@
             line-height: 1.6;
             margin: 0;
         }
+
+       
     </style>
 </head>
 
 <body>
 
     <header class="app-header">
-        
+
 
         <nav class="main-nav">
             <div class="brand-identity">
                 <div class="logo-container">
-                   <img src="https://i.ibb.co/Ndrx7JS9/pionnerlogo.webp" style="width: 50px; height: auto;" alt="Logo">
+                    <img src="https://i.ibb.co/Ndrx7JS9/pionnerlogo.webp" style="width: 50px; height: auto;" alt="Logo">
                 </div>
                 <div class="brand-text">
                     <h1>PIONEER HOSPITAL</h1>
@@ -547,7 +572,7 @@
                 </div>
             </div>
             <div class="nav-actions">
-                <a href="tel:017XXXXXXXX" class="btn-emergency-call">
+                <a href="tel:008801961418137" class="btn-emergency-call">
                     <i class="fas fa-phone-volume"></i>
                     <span>SERIAL</span>
                 </a>
@@ -557,9 +582,9 @@
 
     <div class="hero-slider">
         <div class="slider-wrapper" id="slider">
-            <div class="slide"><img src="https://i.ibb.co/cStSch2Z/pexels-zandatsu-32213424.jpg"></div>
-            <div class="slide"><img src="https://i.ibb.co/zVyLrZMB/pexels-rdne-6129685.jpg"></div>
-            <div class="slide"><img src="https://i.ibb.co/mVtMY3pP/pexels-zeoxs-11748791.jpg"></div>
+            <div class="slide"><img src="https://i.ibb.co/KzGjHDDq/imgx.webp"></div>
+            <div class="slide"><img src="https://i.ibb.co/QvsBC7zX/img.webp"></div>
+            <div class="slide"><img src="https://i.ibb.co/XfgcNNz6/imgxl.webp"></div>
         </div>
         <div class="slider-dots">
             <div class="dot active"></div>
@@ -569,7 +594,7 @@
     </div>
 
     <div class="action-hub">
-        <a href="tel:017XXXXXXXX" class="action-card">
+        <a href="tel:008801961418137" class="action-card">
             <i class="fas fa-truck-medical"></i>
             <span>Ambulance</span>
         </a>
@@ -581,10 +606,14 @@
 
     <div id="diagnostics" class="section-label">Diagnostic Excellence</div>
     <div class="horizontal-scroll">
-        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests
+                Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span
+                class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span
+                class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests
+                Price</span></a>
     </div>
 
     <div id="doctors" class="section-label">Specialist Doctors</div>
@@ -596,7 +625,7 @@
         <div class="tab" onclick="fetchAndFilter('Pediatrics', this)">Specialized Lifestyle & Skin Care</div>
 
 
-        
+
     </div>
 
     <div class="doctor-container" id="doctorContainer">
@@ -610,9 +639,9 @@
         </div>
 
         <div class="footer-contact-grid">
-            <a href="tel:017XXXXXXXX" class="f-link-card">
+            <a href="tel:008801961418137" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-headset"></i></div>
-                <div class="content"><b>Hospital Hotline</b><span>+880 17XX-XXXXXX</span></div>
+                <div class="content"><b>Hospital Hotline</b><span>+880 1961418137</span></div>
             </a>
             <a href="#" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
@@ -620,7 +649,7 @@
             </a>
         </div>
 
-        <a href="tel:017XXXXXXXX" class="emergency-banner">
+        <a href="tel:008801511772222" class="emergency-banner">
             <div style="display: flex; flex-direction: column;">
                 <span style="font-size: 0.75rem; opacity: 0.9; text-transform: uppercase;">24/7 Rapid Response</span>
                 <b style="font-size: 1.1rem;">Emergency Serial</b>
@@ -629,13 +658,13 @@
         </a>
 
         <div class="social-row">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/pioneerhospitalctg/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/8801817751509"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:pioneerhospitalltdctg@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2025 RAOZAN HELPLINE <br>Partnered with PIONEER HOSPITAL</p>
+            <p>© 2025 RAOZAN HELPLINE</p>
         </div>
     </footer>
 
@@ -665,7 +694,7 @@
         async function fetchAndFilter(category, btn) {
             // UI Update: Toggle active tab
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            if(btn) btn.classList.add('active');
+            if (btn) btn.classList.add('active');
 
             const container = document.getElementById('doctorContainer');
             container.innerHTML = '<div class="loader-text"><i class="fas fa-spinner fa-spin"></i> Finding doctors...</div>';
@@ -704,7 +733,7 @@
             doctors.forEach(doc => {
                 const card = document.createElement('article');
                 card.className = 'doc-card';
-                
+
                 // Set avatar icon based on gender/specialty if needed, or keep default
                 let icon = doc.category === 'Gynae' ? 'fa-user-nurse' : 'fa-user-md';
 
