@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneer Admin | Hospital Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #1e293b;
+        }
+
+        /* Glassmorphism Effect */
+        .glass { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(20px); 
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+        }
+
+        .input-field { 
+            background: rgba(255, 255, 255, 0.9); 
+            border: 1px solid #e2e8f0; 
+            padding: 0.8rem 1.2rem; 
+            border-radius: 14px; 
+            width: 100%; 
+            outline: none; 
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .input-field:focus { 
+            border-color: #3b82f6; 
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); 
+        }
+
+        /* Professional Category Chips */
+        .cat-chip { 
+            cursor: pointer; 
+            padding: 12px 8px; 
+            border-radius: 12px; 
+            border: 1.5px solid #e2e8f0; 
+            background: rgba(255, 255, 255, 0.5); 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            text-align: center; 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            letter-spacing: 0.025em;
+            color: #64748b;
+        }
+        .cat-chip:hover { 
+            background: #ffffff; 
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+        .cat-chip.selected { 
+            border-color: #3b82f6; 
+            background: #eff6ff; 
+            color: #2563eb; 
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+        
+        #adminPanel { display: none; }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #3b82f6;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="min-h-screen overflow-x-hidden">
+
+    <div id="loginGate" class="fixed inset-0 z-[1000] flex items-center justify-center bg-slate-900/40 backdrop-blur-xl">
+        <div class="glass p-10 rounded-[40px] w-full max-w-md shadow-2xl mx-4">
+            <div class="text-center mb-10">
+                <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl mx-auto flex items-center justify-center text-4xl shadow-xl mb-6">🏥</div>
+                <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">Pioneer Health</h1>
+                <p class="text-slate-500 font-medium text-sm mt-2">Authorized Administrative Portal</p>
+            </div>
+            <form id="loginForm" class="space-y-5">
+                <input type="text" id="user" placeholder="Admin Username" required class="input-field">
+                <input type="password" id="pin" placeholder="Access PIN" required class="input-field">
+                <button type="submit" id="loginBtn" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all active:scale-95">LOGIN TO SYSTEM</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="flex flex-col lg:flex-row min-h-screen p-4 lg:p-8 gap-8">
+        
+        <aside class="w-full lg:w-80 glass rounded-[35px] p-8 flex flex-col shadow-2xl">
+            <div class="flex items-center gap-3 mb-12">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold">P</div>
+                <div class="text-xl font-extrabold text-slate-800">PIONEER <span class="text-blue-600">ADMIN</span></div>
+            </div>
+            
+            <div class="mb-12">
+                <label class="text-[11px] font-bold mb-3 block text-slate-400 tracking-wider">SEARCH SYSTEM</label>
+                <div class="relative group">
+                    <input type="text" id="searchQuery" placeholder="ID or Doctor Name..." class="input-field pr-12 group-hover:border-blue-300">
+                    <button onclick="searchDoctor()" class="absolute right-4 top-3 text-blue-500 hover:scale-110 transition-transform">🔍</button>
+                </div>
+                <p id="searchMsg" class="text-[11px] mt-2 font-bold text-red-500 hidden px-2"></p>
+            </div>
+
+            <nav class="space-y-3 flex-1">
+                <div onclick="location.reload()" class="p-4 bg-blue-600/10 text-blue-600 rounded-2xl font-bold flex items-center gap-3 cursor-pointer hover:bg-blue-600/20 transition-all"><span>➕</span> New Registration</div>
+                <div class="p-4 text-slate-500 hover:bg-white rounded-2xl transition cursor-pointer flex items-center gap-3 font-semibold"><span>📊</span> Analytics</div>
+                <div class="p-4 text-slate-500 hover:bg-white rounded-2xl transition cursor-pointer flex items-center gap-3 font-semibold"><span>📋</span> Doctor Database</div>
+            </nav>
+
+            <button onclick="logout()" class="mt-8 p-4 bg-red-50 text-red-500 rounded-2xl font-bold hover:bg-red-100 transition flex items-center justify-center gap-2"> Sign Out</button>
+        </aside>
+
+        <main class="flex-1 max-w-6xl">
+            <div class="glass rounded-[45px] p-8 md:p-12 shadow-2xl relative">
+                <div id="loadingOverlay" class="absolute inset-0 bg-white/40 backdrop-blur-md z-50 flex items-center justify-center hidden rounded-[45px]">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="spinner"></div>
+                        <p class="text-xs font-bold text-blue-600">SYNCING CLOUD DATABASE</p>
+                    </div>
+                </div>
+
+                <header class="mb-12 flex flex-col md:flex-row justify-between md:items-center gap-4">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-slate-800 tracking-tight" id="formTitle">Doctor Registration</h2>
+                        <p class="text-slate-500 text-sm mt-1">Please ensure all medical credentials are accurate.</p>
+                    </div>
+                    <div id="docIdBadge" class="hidden">
+                        <span class="bg-slate-800 text-white px-5 py-2.5 rounded-2xl text-[11px] font-black tracking-widest shadow-lg">UNIQUE ID: <span id="displayId"></span></span>
+                    </div>
+                </header>
+
+                <form id="doctorForm" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    <input type="hidden" name="id" id="hiddenId">
+                    
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold text-slate-400 tracking-widest">DOCTOR FULL NAME</label>
+                        <input type="text" name="name" required class="input-field" placeholder="Dr. John Smith" oninput="this.value = this.value.toUpperCase()">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold text-slate-400 tracking-widest">SPECIALTY / ROLE</label>
+                        <input type="text" name="specialty" required class="input-field" placeholder="e.g. CONSULTANT" oninput="this.value = this.value.toUpperCase()">
+                    </div>
+
+                    <div class="md:col-span-2 space-y-4 my-2">
+                        <label class="text-[11px] font-bold text-slate-400 tracking-widest">DEPARTMENT CATEGORY</label>
+                        <input type="hidden" name="category" id="selectedCategory" required>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3" id="catGrid"></div>
+                    </div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">QUALIFICATION</label>
+                        <input type="text" name="degree" class="input-field" placeholder="MBBS, MD" oninput="this.value = this.value.toUpperCase()"></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">PRACTICE DAYS</label>
+                        <input type="text" name="days" class="input-field" placeholder="SUN - THU" oninput="this.value = this.value.toUpperCase()"></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">VISITING HOURS</label>
+                        <input type="text" name="timing" class="input-field" placeholder="05:00 PM - 09:00 PM" oninput="this.value = this.value.toUpperCase()"></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">CHAMBER / ROOM</label>
+                        <input type="text" name="room" class="input-field" placeholder="ROOM 405" oninput="this.value = this.value.toUpperCase()"></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">CONSULTATION FEE</label>
+                        <input type="number" name="fee" class="input-field" placeholder="0.00"></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">OFFICIAL PHONE</label>
+                        <input type="tel" name="phone" required class="input-field" placeholder="+880..."></div>
+
+                    <div class="space-y-2"><label class="text-[11px] font-bold text-slate-400 tracking-widest">CURRENT AVAILABILITY</label>
+                        <select name="status" class="input-field cursor-pointer font-bold text-slate-700">
+                            <option value="AVAILABLE">🟢 AVAILABLE</option>
+                            <option value="NOT AVAILABLE">🔴 NOT AVAILABLE</option>
+                        </select></div>
+
+                    <div class="md:col-span-2 pt-10">
+                        <button type="submit" id="saveBtn" class="w-full bg-slate-900 text-white font-bold py-5 rounded-[22px] shadow-2xl hover:bg-blue-600 transition-all text-sm tracking-widest flex items-center justify-center gap-3 active:scale-[0.99]">
+                            SAVE RECORD TO PIONEER CLOUD
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec";
+        const CATEGORIES = ["MEDICINE", "CARDIOLOGY", "NEUROLOGY", "GASTROENTEROLOGY", "GYNECOLOGY", "PEDIATRICS", "UROLOGY", "GENERAL SURGERY", "ORTHOPEDICS", "ENT", "DIABETOLOGY", "PSYCHIATRY", "DERMATOLOGY", "DENTAL", "EYE / OPTIC"];
+
+        // Setup UI
+        const catGrid = document.getElementById('catGrid');
+        CATEGORIES.forEach(cat => {
+            const div = document.createElement('div');
+            div.className = 'cat-chip';
+            div.innerText = cat;
+            div.onclick = () => {
+                document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('selected'));
+                div.classList.add('selected');
+                document.getElementById('selectedCategory').value = cat;
+            };
+            catGrid.appendChild(div);
+        });
+
+        // Auth Check
+        if (sessionStorage.getItem('auth') === 'true') {
+            document.getElementById('loginGate').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'flex';
+        }
+
+        // Login Submit - FIXED logic to match Apps Script
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "VERIFYING...";
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Use no-cors if you encounter CORS issues, but note you won't see response body
+                    body: JSON.stringify({ 
+                        action: 'verifyLogin', // Changed from 'checkLogin'
+                        user: document.getElementById('user').value, // Changed from 'username'
+                        pin: document.getElementById('pin').value 
+                    })
+                });
+
+                // Since we need the response body, we usually use the default CORS mode.
+                // If the previous Apps Script was deployed correctly, standard fetch works:
+                const standardRes = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ 
+                        action: 'verifyLogin', 
+                        user: document.getElementById('user').value, 
+                        pin: document.getElementById('pin').value 
+                    })
+                });
+
+                const data = await standardRes.json();
+                if (data.success) { 
+                    sessionStorage.setItem('auth', 'true'); 
+                    location.reload(); 
+                } else { 
+                    alert(data.message || "Invalid Credentials"); 
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }
+            } catch (err) { 
+                console.error(err);
+                alert("Server Error. Please ensure the Apps Script is deployed as 'Anyone'."); 
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        });
+
+        // Search Function
+        async function searchDoctor() {
+            const q = document.getElementById('searchQuery').value;
+            if (!q) return;
+            toggleLoading(true);
+            try {
+                const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'searchDoctor', query: q }) });
+                const result = await res.json();
+                if (result.success) {
+                    fillForm(result.data);
+                    document.getElementById('searchMsg').classList.add('hidden');
+                } else {
+                    document.getElementById('searchMsg').innerText = "DOCTOR NOT FOUND IN REGISTRY";
+                    document.getElementById('searchMsg').classList.remove('hidden');
+                }
+            } finally { toggleLoading(false); }
+        }
+
+        function fillForm(d) {
+            document.getElementById('formTitle').innerText = "Update Doctor Record";
+            document.getElementById('saveBtn').innerText = "UPDATE CLOUD RECORD";
+            document.getElementById('hiddenId').value = d.id;
+            document.getElementById('displayId').innerText = d.id;
+            document.getElementById('docIdBadge').classList.remove('hidden');
+            const form = document.getElementById('doctorForm');
+            for (let key in d) { if (form[key]) form[key].value = d[key]; }
+            document.querySelectorAll('.cat-chip').forEach(chip => {
+                if (chip.innerText === d.category) {
+                    chip.classList.add('selected');
+                    document.getElementById('selectedCategory').value = d.category;
+                }
+            });
+        }
+
+        // Final Submission
+        document.getElementById('doctorForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if(!document.getElementById('selectedCategory').value) return alert("Please select a Department Category");
+            toggleLoading(true);
+            const payload = Object.fromEntries(new FormData(this));
+            payload.action = payload.id ? "updateDoctor" : "addDoctor";
+            try {
+                const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+                const result = await res.json();
+                alert(result.message);
+                location.reload();
+            } catch (err) { alert("Save Failed"); toggleLoading(false); }
+        });
+
+        function toggleLoading(show) { document.getElementById('loadingOverlay').classList.toggle('hidden', !show); }
+        function logout() { sessionStorage.removeItem('auth'); location.reload(); }
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>

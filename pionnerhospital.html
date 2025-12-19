@@ -28,6 +28,7 @@
             --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             --glass: rgba(255, 255, 255, 0.9);
             --pulse_color: rgba(0, 141, 177, 0.3);
+            --success: #10B981;
         }
 
         body {
@@ -339,6 +340,7 @@
         }
 
         .doc-card {
+            position: relative;
             background: var(--surface);
             border-radius: 28px;
             padding: 20px;
@@ -347,6 +349,21 @@
             box-shadow: var(--shadow-sm);
             animation: fadeIn 0.4s ease;
         }
+
+        /* Status Badge */
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .status-available { background: #DCFCE7; color: #166534; }
+        .status-away { background: #FEF3C7; color: #92400E; }
 
         @keyframes fadeIn {
             from {
@@ -384,6 +401,7 @@
             font-size: 1.05rem;
             font-weight: 800;
             color: var(--secondary);
+            max-width: 180px;
         }
 
         .doc-degree {
@@ -552,15 +570,12 @@
             margin: 0;
         }
 
-       
     </style>
 </head>
 
 <body>
 
     <header class="app-header">
-
-
         <nav class="main-nav">
             <div class="brand-identity">
                 <div class="logo-container">
@@ -598,7 +613,7 @@
             <i class="fas fa-truck-medical"></i>
             <span>Ambulance</span>
         </a>
-        <a href="https://maps.app.goo.gl/xgCTihhwShDiJEvV6" class="action-card">
+        <a href="https://maps.google.com" class="action-card">
             <i class="fas fa-location-arrow"></i>
             <span>Directions</span>
         </a>
@@ -606,14 +621,10 @@
 
     <div id="diagnostics" class="section-label">Diagnostic Excellence</div>
     <div class="horizontal-scroll">
-        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests
-                Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span
-                class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span
-                class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests
-                Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests Price</span></a>
     </div>
 
     <div id="doctors" class="section-label">Specialist Doctors</div>
@@ -623,9 +634,6 @@
         <div class="tab" onclick="fetchAndFilter('Gynae', this)">Family & Reproductive Health</div>
         <div class="tab" onclick="fetchAndFilter('Orthopedic', this)">Surgical & Structural Care</div>
         <div class="tab" onclick="fetchAndFilter('Pediatrics', this)">Specialized Lifestyle & Skin Care</div>
-
-
-
     </div>
 
     <div class="doctor-container" id="doctorContainer">
@@ -670,7 +678,7 @@
 
     <script>
         // --- 1. CONFIGURATION ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec"; // REPLACE THIS
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec"; 
 
         // --- 2. HERO SLIDER LOGIC ---
         let currentSlide = 0;
@@ -679,6 +687,7 @@
         const dots = document.querySelectorAll('.dot');
 
         function updateSlider() {
+            if(!sliderWrapper) return;
             sliderWrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
@@ -692,7 +701,7 @@
 
         // --- 3. DYNAMIC DOCTOR FETCHING & FILTERING ---
         async function fetchAndFilter(category, btn) {
-            // UI Update: Toggle active tab
+            // UI Update
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             if (btn) btn.classList.add('active');
 
@@ -700,20 +709,27 @@
             container.innerHTML = '<div class="loader-text"><i class="fas fa-spinner fa-spin"></i> Finding doctors...</div>';
 
             try {
-                const response = await fetch(SCRIPT_URL, {
+                // Requesting all doctors first to filter on client side for better matching
+                const res = await fetch(SCRIPT_URL, {
                     method: "POST",
-                    body: JSON.stringify({
-                        action: "getDoctors",
-                        category: category // Pass category to Google Script
-                    })
+                    body: JSON.stringify({ action: "getDoctors", category: "All" })
                 });
 
-                const result = await response.json();
+                const result = await res.json();
 
                 if (result.success) {
-                    renderDoctors(result.data);
+                    // FILTER LOGIC: Case-insensitive check
+                    const filteredData = (category === 'All') 
+                        ? result.data 
+                        : result.data.filter(doc => doc.category.toLowerCase() === category.toLowerCase());
+
+                    if(filteredData.length > 0) {
+                        renderDoctors(filteredData);
+                    } else {
+                        container.innerHTML = '<div class="loader-text">No doctors found in this category.</div>';
+                    }
                 } else {
-                    container.innerHTML = '<div class="loader-text">No doctors found in this category.</div>';
+                    container.innerHTML = '<div class="loader-text">Failed to retrieve data.</div>';
                 }
             } catch (error) {
                 container.innerHTML = '<div class="loader-text">Error loading data. Please check connection.</div>';
@@ -725,19 +741,17 @@
             const container = document.getElementById('doctorContainer');
             container.innerHTML = "";
 
-            if (doctors.length === 0) {
-                container.innerHTML = '<div class="loader-text">No specialists currently available.</div>';
-                return;
-            }
-
             doctors.forEach(doc => {
                 const card = document.createElement('article');
                 card.className = 'doc-card';
 
-                // Set avatar icon based on gender/specialty if needed, or keep default
-                let icon = doc.category === 'Gynae' ? 'fa-user-nurse' : 'fa-user-md';
+                let icon = (doc.category && doc.category.toLowerCase() === 'gynae') ? 'fa-user-nurse' : 'fa-user-md';
+                
+                const statusClass = (doc.status && doc.status.toLowerCase() === 'available') ? 'status-available' : 'status-away';
+                const statusText = doc.status || 'Checking...';
 
                 card.innerHTML = `
+                    <div class="status-badge ${statusClass}">${statusText}</div>
                     <div class="doc-header">
                         <div class="doc-avatar"><i class="fas ${icon}"></i></div>
                         <div class="doc-meta">
@@ -758,11 +772,9 @@
             });
         }
 
-        // --- 4. INITIAL LOAD ---
         window.onload = () => {
             fetchAndFilter('All');
         };
     </script>
 </body>
-
 </html>
