@@ -350,21 +350,6 @@
             animation: fadeIn 0.4s ease;
         }
 
-        /* Status Badge */
-        .status-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .status-available { background: #DCFCE7; color: #166534; }
-        .status-away { background: #FEF3C7; color: #92400E; }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -385,6 +370,7 @@
         }
 
         .doc-avatar {
+            position: relative;
             width: 58px;
             height: 58px;
             border-radius: 18px;
@@ -395,6 +381,20 @@
             color: var(--primary);
             font-size: 1.6rem;
         }
+
+        /* Corner Dot Indicators */
+        .corner-dot {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid var(--surface);
+            z-index: 5;
+        }
+        .dot-available { background-color: #10B981; }
+        .dot-away { background-color: #EF4444; }
 
         .doc-meta h3 {
             margin: 0;
@@ -709,7 +709,6 @@
             container.innerHTML = '<div class="loader-text"><i class="fas fa-spinner fa-spin"></i> Finding doctors...</div>';
 
             try {
-                // Requesting all doctors first to filter on client side for better matching
                 const res = await fetch(SCRIPT_URL, {
                     method: "POST",
                     body: JSON.stringify({ action: "getDoctors", category: "All" })
@@ -718,7 +717,6 @@
                 const result = await res.json();
 
                 if (result.success) {
-                    // FILTER LOGIC: Case-insensitive check
                     const filteredData = (category === 'All') 
                         ? result.data 
                         : result.data.filter(doc => doc.category.toLowerCase() === category.toLowerCase());
@@ -747,13 +745,15 @@
 
                 let icon = (doc.category && doc.category.toLowerCase() === 'gynae') ? 'fa-user-nurse' : 'fa-user-md';
                 
-                const statusClass = (doc.status && doc.status.toLowerCase() === 'available') ? 'status-available' : 'status-away';
-                const statusText = doc.status || 'Checking...';
+                // Logic for green/red dot based on status
+                const dotClass = (doc.status && doc.status.toLowerCase() === 'available') ? 'dot-available' : 'dot-away';
 
                 card.innerHTML = `
-                    <div class="status-badge ${statusClass}">${statusText}</div>
                     <div class="doc-header">
-                        <div class="doc-avatar"><i class="fas ${icon}"></i></div>
+                        <div class="doc-avatar">
+                            <i class="fas ${icon}"></i>
+                            <div class="corner-dot ${dotClass}"></div>
+                        </div>
                         <div class="doc-meta">
                             <h3>${doc.name}</h3>
                             <div class="doc-degree">${doc.degree}</div>
@@ -764,7 +764,7 @@
                         <div class="s-item"><b>Days</b><span>${doc.days}</span></div>
                         <div class="s-item"><b>Timing</b><span>${doc.timing}</span></div>
                         <div class="s-item"><b>Room</b><span>${doc.room}</span></div>
-                        <div class="s-item"><b>Fee</b><span>৳ ${doc.fee}</span></div>
+                        <div class="s-item"><b>Consultation Fee</b><span>৳ ${doc.fee}</span></div>
                     </div>
                     <a href="tel:${doc.phone}" class="btn-booking">Book Appointment</a>
                 `;
