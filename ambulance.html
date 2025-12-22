@@ -1,125 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Raozan | Emergency Ambulance Directory</title>
-  <meta name="description" content="Find emergency ambulance services in Noapara and Raozan. Smart Raozan Helpline provides a quick directory for life-saving services.">
-  <meta name="keywords" content="Smart Raozan, Noapara, smart noapara, raozanhelpline, ambulance raozan, emergency noapara">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background-color: #f8fafc;
-      /* Disable Selection */
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    .glass-card { background: rgba(255, 255, 255, 1); }
-    .search-focus:focus { ring: 2px; ring-color: #dc2626; border-color: #dc2626; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Raozan | Emergency Ambulance Directory</title>
+    <meta name="description"
+        content="Find emergency ambulance services in Noapara and Raozan. Smart Raozan Helpline provides a quick directory for life-saving services.">
+    <meta name="keywords"
+        content="Smart Raozan, Noapara, smart noapara, raozanhelpline, ambulance raozan, emergency noapara">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Disable Selection */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .search-focus:focus {
+            ring: 2px;
+            ring-color: #dc2626;
+            border-color: #dc2626;
+        }
+    </style>
 </head>
 
 <body class="min-h-screen flex flex-col" oncontextmenu="return false;">
 
-  <main class="flex-grow container mx-auto px-4 py-8">
-    <div class="text-center mb-8">
-      <h1 class="text-3xl md:text-5xl font-extrabold text-red-600 mb-3 tracking-tight">Smart Raozan Ambulance</h1>
-      <p class="text-gray-600 max-w-lg mx-auto italic">Your trusted directory for emergency medical transportation in Noapara and Raozan.</p>
-    </div>
-
-    <div class="max-w-xl mx-auto mb-12">
-      <div class="relative group">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <i class="fas fa-search text-gray-400 group-focus-within:text-red-500 transition-colors"></i>
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-red-600 mb-3 tracking-tight">Smart Raozan Ambulance</h1>
+            <p class="text-gray-600 max-w-lg mx-auto italic">Your trusted directory for emergency medical transportation
+                in Noapara and Raozan.</p>
         </div>
-        <input type="text" id="searchInput" onkeyup="filterAmbulances()" 
-          placeholder="Search by Location (e.g. Noapara, Raozan)..." 
-          class="block w-full pl-11 pr-4 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all text-lg">
-      </div>
-    </div>
 
-    <div id="ambulance-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="col-span-full text-center py-10">
-        <i class="fas fa-circle-notch fa-spin text-3xl text-red-500"></i>
-        <p class="mt-2 text-gray-500">Connecting to database...</p>
-      </div>
-    </div>
-
-    <div class="mt-16 max-w-4xl mx-auto bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-xl shadow-sm">
-      <div class="flex items-center mb-2">
-        <i class="fas fa-exclamation-triangle text-amber-600 mr-3"></i>
-        <h3 class="text-lg font-bold text-amber-800">Important Disclaimer</h3>
-      </div>
-      <p class="text-amber-900 text-sm leading-relaxed">
-        <strong>Smart Raozan</strong> is an information directory service and <strong>does not own or operate</strong> these ambulance vehicles. These profiles are provided by independent drivers. Before hiring, please verify the driver's identification, discuss the price clearly, and ensure the medical equipment meets your needs. We are not responsible for service quality or pricing disputes.
-      </p>
-    </div>
-
-    <div class="mt-12 max-w-2xl mx-auto">
-      <div class="bg-white border border-gray-100 rounded-3xl p-8 text-center shadow-xl">
-        <div class="inline-block p-4 bg-green-100 rounded-2xl text-green-600 mb-4">
-          <i class="fab fa-whatsapp text-4xl"></i>
+        <div class="max-w-xl mx-auto mb-12">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400 group-focus-within:text-red-500 transition-colors"></i>
+                </div>
+                <input type="text" id="searchInput" onkeyup="filterAmbulances()"
+                    placeholder="Search by Location (e.g. Noapara, Raozan)..."
+                    class="block w-full pl-11 pr-4 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-all text-lg">
+            </div>
         </div>
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Are you an Ambulance Driver?</h2>
-        <p class="text-gray-600 mb-6">Join the <strong>Smart Raozan</strong> network to help your community. Register your profile for free.</p>
-        <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hello,%20I%20am%20an%20ambulance%20driver.%20I%20want%20to%20add%20my%20profile%20to%20Smart%20Raozan." 
-           class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
-          <i class="fab fa-whatsapp mr-2 text-xl"></i> Register on WhatsApp
-        </a>
-      </div>
-    </div>
-  </main>
 
-  <footer class="bg-gray-900 text-gray-400 mt-12">
-    <div class="container mx-auto px-4 py-10">
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-        <div class="flex space-x-8 text-sm font-medium">
-          <a href="#" class="hover:text-white transition">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition">About Us</a>
-          <a href="#" class="hover:text-white transition">Contact</a>
+        <div id="ambulance-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center py-10">
+                <i class="fas fa-circle-notch fa-spin text-3xl text-red-500"></i>
+                <p class="mt-2 text-gray-500">Connecting to database...</p>
+            </div>
         </div>
-        <div class="text-center">
-          <p class="text-gray-500">&copy; 2025 <span class="text-red-500 font-bold">Smart Raozan</span> | All Rights Reserved</p>
+
+        <div class="mt-16 max-w-4xl mx-auto bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-xl shadow-sm">
+            <div class="flex items-center mb-2">
+                <i class="fas fa-exclamation-triangle text-amber-600 mr-3"></i>
+                <h3 class="text-lg font-bold text-amber-800">Important Disclaimer</h3>
+            </div>
+            <p class="text-amber-900 text-sm leading-relaxed">
+                <strong>Smart Raozan</strong> is an information directory service and <strong>does not own or
+                    operate</strong> these ambulance vehicles. These profiles are provided by independent drivers.
+                Before hiring, please verify the driver's identification, discuss the price clearly, and ensure the
+                medical equipment meets your needs. We are not responsible for service quality or pricing disputes.
+            </p>
         </div>
-      </div>
-    </div>
-  </footer>
 
-  <script>
-    let ambulanceData = [];
+        <div class="mt-12 max-w-2xl mx-auto">
+            <div class="bg-white border border-gray-100 rounded-3xl p-8 text-center shadow-xl">
+                <div class="inline-block p-4 bg-green-100 rounded-2xl text-green-600 mb-4">
+                    <i class="fab fa-whatsapp text-4xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Are you an Ambulance Driver?</h2>
+                <p class="text-gray-600 mb-6">Join the <strong>Smart Raozan</strong> network to help your community.
+                    Register your profile for free.</p>
+                <a href="https://wa.me/8801601764777?text=Hello,%20I%20am%20an%20ambulance%20driver.%20I%20want%20to%20add%20my%20profile%20to%20Smart%20Raozan."
+                    class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-10 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
+                    <i class="fab fa-whatsapp mr-2 text-xl"></i> Register on WhatsApp
+                </a>
+            </div>
+        </div>
+    </main>
 
-    // Security: Disable F12, Ctrl+Shift+I, Ctrl+U
-    document.onkeydown = function(e) {
-      if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
-        return false;
-      }
-    };
+    <footer class="bg-gray-900 text-gray-400 mt-12">
+        <div class="container mx-auto px-4 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="flex space-x-8 text-sm font-medium">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">About Us</a>
+                    <a href="#" class="hover:text-white transition">Contact</a>
+                </div>
+                <div class="text-center">
+                    <p class="text-gray-500">&copy; 2025 <span class="text-red-500 font-bold">Smart Raozan</span> | All
+                        Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    window.onload = function() {
-      google.script.run.withSuccessHandler(function(data) {
-        ambulanceData = data;
-        renderAmbulances(data);
-      }).getAmbulanceData();
-    };
+    <script>
+        let ambulanceData = [];
 
-    function renderAmbulances(data) {
-      const container = document.getElementById('ambulance-list');
-      container.innerHTML = '';
+        // Security: Disable F12, Ctrl+Shift+I, Ctrl+U
+        document.onkeydown = function (e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
+                return false;
+            }
+        };
 
-      if (data.length === 0) {
-        container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-500">No results found for that location.</div>';
-        return;
-      }
+        window.onload = function () {
+            google.script.run.withSuccessHandler(function (data) {
+                ambulanceData = data;
+                renderAmbulances(data);
+            }).getAmbulanceData();
+        };
 
-      data.forEach(item => {
-        const card = `
+        function renderAmbulances(data) {
+            const container = document.getElementById('ambulance-list');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-10 text-gray-500">No results found for that location.</div>';
+                return;
+            }
+
+            data.forEach(item => {
+                const card = `
           <div class="ambulance-card glass-card border border-gray-200 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="flex justify-between items-start mb-4">
               <span class="bg-red-50 text-red-600 text-[10px] font-black px-2 py-1 rounded-lg uppercase tracking-widest border border-red-100">Verified Service</span>
@@ -140,18 +158,19 @@
             </a>
           </div>
         `;
-        container.innerHTML += card;
-      });
-    }
+                container.innerHTML += card;
+            });
+        }
 
-    function filterAmbulances() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = ambulanceData.filter(item => 
-        item.location.toLowerCase().includes(input) || 
-        item.name.toLowerCase().includes(input)
-      );
-      renderAmbulances(filtered);
-    }
-  </script>
+        function filterAmbulances() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = ambulanceData.filter(item =>
+                item.location.toLowerCase().includes(input) ||
+                item.name.toLowerCase().includes(input)
+            );
+            renderAmbulances(filtered);
+        }
+    </script>
 </body>
+
 </html>
