@@ -254,7 +254,8 @@
         /* --- PREMIUM FORMS --- */
         .donor-box,
         .content-section,
-        .faq-section {
+        .faq-section,
+        .disclaimer-section {
             margin: 25px 20px;
             background: var(--white);
             border-radius: 28px;
@@ -346,11 +347,43 @@
         }
 
         .footer {
-            padding: 40px 20px;
+            padding: 40px 20px 20px;
             text-align: center;
             color: var(--text-light);
             font-size: 0.85rem;
             font-weight: 600;
+        }
+
+        /* --- NEW STYLES --- */
+        .disclaimer-section {
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+        }
+
+        .disclaimer-text {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent);
         }
 
         .whatsapp-fab {
@@ -442,14 +475,9 @@
         <a href="index.html" class="nav-brand">
             <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png"
                 alt="Logo">
-            <span>RAOZAN HELPLINE</span>
+            <span>Smart Raozan</span>
         </a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link active">HOME</a>
-            <a href="about.html" class="nav-link">ABOUT</a>
-            <a href="privacy.html" class="nav-link">PRIVACY</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
-        </div>
+
     </nav>
 
     <div class="container">
@@ -459,7 +487,9 @@
                 </marquee>
             </div>
             <div id="adsContainer" class="ad-card">
-                <img id="adImage" src="https://i.ibb.co/KzGjHDDq/imgx.webp" alt="Banner" style="display:none;">
+                <img id="adImage" src="https://via.placeholder.com/300x250?text=Loading+Ad..."
+                    data-src="https://i.ibb.co/KzGjHDDq/imgx.webp" alt="Banner"
+                    style="width: 100%; height: 200px; background-color: #f0f0f0;">
             </div>
         </div>
 
@@ -588,9 +618,26 @@
             </div>
         </div>
 
+        <div class="disclaimer-section">
+            <div class="section-label" style="color: var(--accent);"><i class="fas fa-exclamation-triangle"></i> Professional Disclaimer</div>
+            <div class="disclaimer-text">
+                The information provided by Raozan Helpline is for general informational purposes only. 
+                <strong>Medical Advice:</strong> We do not provide medical health advice. Always seek the advice of a qualified health provider regarding medical conditions.
+                <strong>Blood Donors:</strong> While we maintain a registry, we offer <strong>no guarantee</strong> on finding a blood donor at any specific time. Users interact with donors at their own discretion.
+            </div>
+        </div>
+
         <div class="footer">
             © 2025 RAOZAN HELPLINE<br>
             <span style="opacity: 0.6; font-size: 0.75rem; letter-spacing: 1px;">PREMIUM COMMUNITY SERVICE</span>
+            
+            <div class="footer-nav">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="contact-us.html">Contact Us</a>
+                <span>|</span>
+                <a href="about-us.html">About Us</a>
+            </div>
         </div>
     </div>
 
