@@ -12,6 +12,15 @@
         :root {
             --medical-red: #dc2626;
             --clinical-blue: #0f172a;
+            --whatsapp-green: #25D366;
+        }
+
+        /* Security: Prevent highlighting and text selection */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -20,11 +29,12 @@
             color: #1e293b;
         }
 
-        /* Professional Donor Card - Reduced Height, Enhanced Contrast */
+        /* Professional Donor Card - Reduced Corners & Modern Look */
         .donor-card {
             background: #ffffff;
             border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            border-radius: 2px;
+            /* Reduced for professional look */
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -42,27 +52,41 @@
             background: #fee2e2;
             color: #991b1b;
             padding: 4px 12px;
-            border-radius: 4px;
+            border-radius: 2px;
             font-weight: 800;
             font-size: 1.1rem;
         }
 
+        /* Professional Action Buttons */
         .btn-call {
             background: var(--clinical-blue);
             color: white;
             text-align: center;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 8px;
+            border-radius: 2px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            flex: 1;
             transition: background 0.2s;
         }
 
-        .btn-call:hover {
-            background: var(--medical-red);
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 2px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex: 1;
+            transition: opacity 0.2s;
         }
 
-        /* Typography for older eyes */
+        .btn-call:hover,
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
         .donor-name {
             font-size: 1.15rem;
             font-weight: 700;
@@ -109,17 +133,19 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <i class="fas fa-hand-holding-medical text-red-600 text-2xl"></i>
-                <span class="text-xl font-bold tracking-tight text-slate-900">NOAPARA<span
-                        class="text-red-600">BLOOD BANK</span></span>
+                <span class="text-xl font-bold tracking-tight text-slate-900">BLOOD<span
+                        class="text-red-600">BANK</span></span>
             </div>
             <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
                 <a href="#faq" class="hover:text-red-600">FAQ</a>
                 <a href="#feedback" class="hover:text-red-600">Reviews</a>
                 <a href="#blog" class="hover:text-red-600">Medical Blog</a>
             </div>
-            <button
-                class="bg-red-600 text-white px-6 py-2 rounded font-bold text-sm hover:bg-slate-900 transition">DONOR
-                PORTAL</button>
+            <a href="bloodreg.html"
+                class="flex items-center gap-2 text-slate-500 hover:text-red-600 transition text-base">
+               <i class="fa-solid fa-user-plus"></i>
+                <span>Register</span>
+            </a>
         </div>
     </nav>
 
@@ -252,35 +278,30 @@
                 <div>
                     <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-500">Legal & Privacy</h4>
                     <ul class="space-y-3 text-sm font-medium">
-                        <li><a href="#" class="hover:text-red-500 transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-red-500 transition">Contact Support</a></li>
-                        <li><a href="#" class="hover:text-red-500 transition">Data Deleting Form</a></li>
+                        <li><a href="privacy.html" class="hover:text-red-500 transition">Privacy Policy</a></li>
+                        <li><a href="contact.html" class="hover:text-red-500 transition">Contact Support</a></li>
+                        <li><a href="bloodreg.html" class="hover:text-red-500 transition">Data Deleting Form</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-500">Resource</h4>
-                    <a href="view-source:https://lifeflow.clinical"
-                        class="text-sm font-mono text-slate-500 hover:text-blue-400">
-                        [RAW] View HTML Source
-                    </a>
-                </div>
-            </div>
 
-            <div class="border-t border-slate-800 pt-8 mt-8">
-                <div class="bg-slate-800/50 p-6 rounded border border-slate-700">
-                    <h5 class="text-xs font-bold text-red-500 uppercase mb-2 tracking-widest">Medical Disclaimer &
-                        Liability</h5>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        <strong>NO MEDICAL ADVICE:</strong> The information provided on this platform is for directory
-                        purposes only and does not constitute medical advice, diagnosis, or treatment.
-                        <strong>NO GUARANTEE:</strong> LifeFlow is a peer-to-peer connection tool; we do not guarantee
-                        that a donor will be available or respond to your request. Users are responsible for verifying
-                        the medical eligibility and health status of donors through certified clinical facilities.
-                    </p>
-                </div>
-                <p class="text-center text-[11px] text-slate-500 mt-8 font-bold tracking-[0.3em]">© 2025 LIFEFLOW
-                    MEDICAL CLINICAL DATABASE. ALL RIGHTS RESERVED.</p>
             </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-8 mt-8">
+            <div class="bg-slate-800/50 p-6 rounded border border-slate-700">
+                <h5 class="text-xs font-bold text-red-500 uppercase mb-2 tracking-widest">Medical Disclaimer &
+                    Liability</h5>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    <strong>NO MEDICAL ADVICE:</strong> The information provided on this platform is for directory
+                    purposes only and does not constitute medical advice, diagnosis, or treatment.
+                    <strong>NO GUARANTEE:</strong> LifeFlow is a peer-to-peer connection tool; we do not guarantee
+                    that a donor will be available or respond to your request. Users are responsible for verifying
+                    the medical eligibility and health status of donors through certified clinical facilities.
+                </p>
+            </div>
+            <p class="text-center text-[11px] text-slate-500 mt-8 font-bold tracking-[0.3em]">© 2025 LIFEFLOW
+                MEDICAL CLINICAL DATABASE. ALL RIGHTS RESERVED.</p>
+        </div>
         </div>
     </footer>
 
@@ -288,6 +309,19 @@
         const _u = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec";
 
         window.onload = () => { fetchDonors(); lockUI(); };
+
+        // Security: Lock Developer Mode and Copying
+        function lockUI() {
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if (e.keyCode == 123 ||
+                    (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) ||
+                    (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83 || e.keyCode == 65 || e.keyCode == 67))) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        }
 
         async function fetchDonors() {
             const group = document.getElementById('bloodFilter').value;
@@ -297,7 +331,11 @@
             try {
                 const res = await fetch(_u, { method: 'POST', body: JSON.stringify({ action: "searchGroup", group: group }) });
                 const result = await res.json();
-                if (result.success) renderDonors(result.data);
+                if (result.success) {
+                    // Randomize donor order
+                    const randomizedData = result.data.sort(() => Math.random() - 0.5);
+                    renderDonors(randomizedData);
+                }
             } catch (e) {
                 list.innerHTML = `<div class="col-span-full text-center text-red-600 font-bold p-10 bg-red-50 rounded">Secure Connection Error. Please refresh.</div>`;
             }
@@ -321,11 +359,18 @@
 
                 let actionArea = "";
                 if (isFemale || !isReady) {
-                    actionArea = `<button onclick="alert('Clinical Verification Required: Contact admin for female donor data.')" class="w-full py-3 rounded bg-slate-100 text-slate-600 text-xs font-bold uppercase hover:bg-slate-200 tracking-wider">Request Access</button>`;
+                    actionArea = `<button onclick="window.location.href='contact.html'" class="w-full py-3 rounded bg-slate-100 text-slate-600 text-xs font-bold uppercase hover:bg-slate-200 tracking-wider">Contact Admin Support</button>`;
                 } else {
-                    actionArea = `<a href="tel:${d.phone}" class="btn-call w-full block tracking-widest flex items-center justify-center gap-2">
-                                    <i class="fas fa-phone-alt text-xs"></i> CONTACT ${d.phone}
-                                 </a>`;
+                    // Double buttons: Call and WhatsApp (Hidden Number text)
+                    actionArea = `
+                    <div class="flex gap-2">
+                        <a href="tel:${d.phone}" class="btn-call flex items-center justify-center gap-2">
+                            <i class="fas fa-phone-alt text-xs"></i> CALL
+                        </a>
+                        <a href="https://wa.me/${d.phone.replace(/\D/g, '')}" target="_blank" class="btn-whatsapp flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp"></i> WHATSAPP
+                        </a>
+                    </div>`;
                 }
 
                 return `
@@ -358,13 +403,6 @@
                 </div>
                 `;
             }).join('');
-        }
-
-        function lockUI() {
-            document.addEventListener('contextmenu', e => e.preventDefault());
-            document.onkeydown = e => {
-                if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false;
-            };
         }
     </script>
 </body>
