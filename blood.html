@@ -2,554 +2,135 @@
 <html lang="en">
 
 <head>
-    <meta name="google-site-verification" content="GktHNwzZuztiJucJxPKL4EeEKmU2nCHuqr9RO3F5jC0" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Noapara Blood Bank | Emergency Donors</title>
-    <link rel="icon" type="image/x-icon"
-        href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow | Clinical Donor Network</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #ef4444;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --glass: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
-        }
-
-        * {
-            -webkit-user-select: none;
-            user-select: none;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            --medical-red: #dc2626;
+            --clinical-blue: #0f172a;
         }
 
         body {
+            background-color: #f1f5f9;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #fff1f2 100%);
-            background-attachment: fixed;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            color: #1e293b;
         }
 
-        /* --- STICKY GLASS NAVIGATION --- */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            padding: 12px 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .nav-brand {
+        /* Professional Donor Card - Reduced Height, Enhanced Contrast */
+        .donor-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 1rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .nav-brand img {
-            height: 32px;
-            border-radius: 8px;
-        }
-
-        .nav-brand span {
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1.15rem;
-            letter-spacing: -0.5px;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.3);
-            min-height: 100vh;
-            padding-bottom: 80px;
-        }
-
-        .top-wrapper {
-            padding: 15px;
-        }
-
-        .news-bar {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 10px 18px;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid var(--glass-border);
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .tabs {
-            display: flex;
-            padding: 5px 15px 15px;
+            flex-direction: column;
             gap: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .tab-btn {
-            flex: 1;
-            padding: 12px 5px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(8px);
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-light);
-            border-radius: 18px;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .tab-btn i {
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-            display: block;
-        }
-
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+        .donor-card:hover {
             transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--medical-red);
         }
 
-        .section {
-            display: none;
-            padding: 20px;
-            animation: fadeIn 0.4s ease;
+        .blood-type-banner {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 1.1rem;
         }
 
-        .section.active {
-            display: block;
+        .btn-call {
+            background: var(--clinical-blue);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-call:hover {
+            background: var(--medical-red);
+        }
+
+        /* Typography for older eyes */
+        .donor-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .label-text {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .data-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #334155;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
-        /* --- FORMS & INPUTS --- */
-        .form-group {
-            margin-bottom: 20px;
+        .animate-card {
+            animation: fadeIn 0.4s ease forwards;
         }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-dark);
-            opacity: 0.8;
-        }
-
-        input,
-        select {
-            width: 100%;
-            padding: 14px 18px;
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.8);
-            transition: 0.3s;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: var(--accent);
-            outline: none;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-secondary {
-            background: var(--accent);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        /* --- PROFESSIONAL GLASS DONOR CARD --- */
-        .result-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 28px;
-            padding: 24px;
-            margin-bottom: 20px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blood-badge {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: var(--accent);
-            color: white;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 16px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-
-        .donor-info h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-            padding-right: 55px;
-            letter-spacing: -0.5px;
-        }
-
-        .meta-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 6px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .meta-row i {
-            color: var(--accent);
-            width: 16px;
-            font-size: 0.85rem;
-        }
-
-        .status-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status-ready {
-            background: #dcfce7;
-            color: #15803d;
-            border: 1px solid #bbf7d0;
-        }
-
-        .status-not {
-            background: #fee2e2;
-            color: #b91c1c;
-            border: 1px solid #fecaca;
-        }
-
-        .pulse-dot {
-            height: 8px;
-            width: 8px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-            box-shadow: 0 0 0 rgba(34, 197, 94, 0.4);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
-            }
-
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-            }
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .btn-call {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-wa {
-            background: #25D366;
-            color: white;
-        }
-
-        /* --- UPDATE FORM BOX --- */
-        #updateFormArea {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            padding: 25px;
-            border-radius: 24px;
-            margin-top: 25px;
-            box-shadow: var(--shadow);
-        }
-
-        /* --- FOOTER & MISC --- */
-        .footer {
-            padding: 40px 20px;
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .whatsapp-fab {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 1001;
-        }
-
-        #toast {
-            visibility: hidden;
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 50px;
-            z-index: 3000;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: slideUpToast 0.4s ease-out;
-        }
-
-        @keyframes slideUpToast {
-            from {
-                bottom: 0;
-                opacity: 0;
-            }
-
-            to {
-                bottom: 100px;
-                opacity: 1;
-            }
-        }
-
-        .progress-container {
+        details summary::-webkit-details-marker {
             display: none;
-            margin-top: 15px;
-        }
-
-        .p-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .p-fill {
-            width: 0%;
-            height: 100%;
-            background: var(--accent);
-            transition: 0.4s;
         }
     </style>
 </head>
 
-<body>
+<body oncontextmenu="return false;">
 
-    <nav class="glass-nav">
-        <a href="index.html" class="nav-brand">
-            <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png"
-                alt="Logo">
-            <span>Noapara Blood Bank</span>
-        </a>
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 px-4 md:px-10 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-hand-holding-medical text-red-600 text-2xl"></i>
+                <span class="text-xl font-bold tracking-tight text-slate-900">NOAPARA<span
+                        class="text-red-600">BLOOD BANK</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+                <a href="#faq" class="hover:text-red-600">FAQ</a>
+                <a href="#feedback" class="hover:text-red-600">Reviews</a>
+                <a href="#blog" class="hover:text-red-600">Medical Blog</a>
+            </div>
+            <button
+                class="bg-red-600 text-white px-6 py-2 rounded font-bold text-sm hover:bg-slate-900 transition">DONOR
+                PORTAL</button>
+        </div>
     </nav>
 
-    <div class="container">
-        <div class="top-wrapper">
-            <div class="news-bar">
-                <marquee id="newsText" scrollamount="4">Emergency Search Available. Become a hero today!</marquee>
-            </div>
-            <div id="adsContainer"></div>
-        </div>
-
-        <div class="tabs">
-            <button class="tab-btn" onclick="openTab('search', this)"><i class="fas fa-search"></i>Donors</button>
-            <button class="tab-btn active" onclick="openTab('register', this)"><i class="fas fa-plus-circle"></i>Register</button>
-            <button class="tab-btn" onclick="openTab('update', this)"><i class="fas fa-user-edit"></i>Update</button>
-            
-        </div>
-
-        <div id="register" class="section active">
-            <form id="regForm">
-                <div class="form-group"><label>Full Name</label><input type="text" id="name" required
-                        oninput="handleInput(this)" placeholder="e.g., RAHUL HOSSAIN"></div>
-                <div class="form-group"><label>Date of Birth</label><input type="text" id="dob"
-                        placeholder="Select Date" onfocus="(this.type='date')" required></div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <select id="gender" required>
-                        <option value="">Choose Gender</option>
-                        <option value="MALE">MALE</option>
-                        <option value="FEMALE">FEMALE</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Blood Group</label>
-                    <select id="bloodgroup" required>
-                        <option value="">Select Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                    </select>
-                </div>
-                <div class="form-group"><label>Village / Address</label><input type="text" id="address" required
-                        oninput="handleInput(this)" placeholder="e.g., Noapara, Raozan"></div>
-                <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" maxlength="11"
-                        placeholder="01XXXXXXXXX" required></div>
-                <div class="form-group">
-                    <label>Current Status</label>
-                    <select id="status" required>
-                        <option value="READY TO DONATE">READY TO DONATE</option>
-                        <option value="NOT READY">NOT READY</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" id="submitBtn">Register Profile</button>
-                <div id="regProgress" class="progress-container">
-                    <div class="p-bar">
-                        <div id="regFill" class="p-fill"></div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div id="update" class="section">
-            <div class="form-group">
-                <label>Verify Mobile Number</label>
-                <input type="tel" id="searchUpdatePhone" maxlength="11" placeholder="Enter your registered number">
-                <button type="button" class="btn btn-secondary" style="margin-top:15px;" id="findBtn"
-                    onclick="findDonorForUpdate()">Verify Profile</button>
-            </div>
-
-            <div id="updateFormArea" style="display:none;">
-                <h4 style="margin: 0 0 15px 0; color: var(--primary);">Edit: <span id="editName"
-                        style="color:var(--accent);"></span></h4>
-                <div class="form-group"><label>New Phone Number</label><input type="tel" id="newPhone" maxlength="11">
-                </div>
-                <div class="form-group">
-                    <label>Donation Status</label>
-                    <select id="newStatus">
-                        <option value="READY TO DONATE">READY TO DONATE</option>
-                        <option value="NOT READY">NOT READY</option>
-                    </select>
-                </div>
-                <button type="button" class="btn" id="saveUpdateBtn" onclick="submitUpdate()">Save Changes</button>
-                <div id="updateProgress" class="progress-container">
-                    <div class="p-bar">
-                        <div id="updateFill" class="p-fill"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="search" class="section">
-            <div class="form-group">
-                <label>Find Blood Group</label>
-                <select id="searchGroup">
+    <section class="bg-slate-900 py-16 px-6">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Verified Donor Directory</h1>
+            <p class="text-slate-400 mb-8 text-lg">Search for eligible blood donors in our clinical database.</p>
+            <div class="flex flex-col md:flex-row gap-3 bg-white p-3 rounded-lg shadow-xl">
+                <select id="bloodFilter"
+                    class="flex-1 bg-slate-50 border border-slate-200 px-4 py-3 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <option value="ALL">All Blood Groups</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
@@ -559,158 +140,232 @@
                     <option value="AB+">AB+</option>
                     <option value="AB-">AB-</option>
                 </select>
-                <button type="button" class="btn btn-secondary" style="margin-top:15px;" id="searchBtn"
-                    onclick="searchDonors()">Search Database</button>
+                <button onclick="fetchDonors()"
+                    class="bg-red-600 text-white px-10 py-3 rounded font-bold uppercase tracking-wider hover:bg-red-700 transition">
+                    <i class="fas fa-search mr-2"></i> Search Donors
+                </button>
             </div>
-            <div id="searchResults" style="margin-top:25px;"></div>
         </div>
+    </section>
 
-        <div class="footer">
-            © 2025 NOAPARA BLOOD BANK<br>
-            <span style="opacity: 0.6;">Raozan Helpline Service</span>
+    <main class="container mx-auto px-6 py-12">
+        <div id="donorList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         </div>
-    </div>
+    </main>
 
-    <a href="https://wa.me/8801601764777" class="whatsapp-fab" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <div id="toast"></div>
+    <section id="faq" class="bg-white py-20 px-6 border-t border-slate-200">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12">General Questions</h2>
+            <div class="space-y-4">
+                <details class="group border border-slate-200 rounded-lg">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800">
+                        Is it safe to donate blood?
+                        <span class="text-red-600 group-open:rotate-180 transition-transform"><i
+                                class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-600 leading-relaxed">
+                        Yes, blood donation is a safe clinical procedure. All equipment is sterile and used only once
+                        for your safety.
+                    </div>
+                </details>
+                <details class="group border border-slate-200 rounded-lg">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-slate-800">
+                        How often can I donate?
+                        <span class="text-red-600 group-open:rotate-180 transition-transform"><i
+                                class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-5 pb-5 text-slate-600 leading-relaxed">
+                        Generally, you can donate whole blood every 56 days (8 weeks) to allow your body to replenish
+                        iron levels.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback" class="bg-slate-50 py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Patient & Donor Experiences</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-red-500">
+                    <div class="flex text-amber-400 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-slate-600 italic">"The response time was incredible. We found a matched donor for an
+                        emergency within 15 minutes."</p>
+                    <p class="mt-4 font-bold text-slate-900">— Robert Chen, Hospital Coordinator</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-slate-800">
+                    <div class="flex text-amber-400 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-slate-600 italic">"As a female donor, I appreciate the privacy protocols. I felt very
+                        secure sharing my data here."</p>
+                    <p class="mt-4 font-bold text-slate-900">— Amanda K., Regular Donor</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-red-500">
+                    <div class="flex text-amber-400 mb-4 text-xs"><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i></div>
+                    <p class="text-slate-600 italic">"A very professional interface compared to other blood-finding
+                        websites. Clear and concise."</p>
+                    <p class="mt-4 font-bold text-slate-900">— Dr. Samuel Wright</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="container mx-auto px-6 py-20">
+        <h2 class="text-3xl font-bold mb-12">Clinical Insights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                <div class="w-full md:w-40 h-32 bg-slate-200 rounded shrink-0"></div>
+                <div>
+                    <span class="text-red-600 text-xs font-bold uppercase">Nutrition</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 hover:underline cursor-pointer">Iron-Rich Diet
+                        for Donors</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Maintaining healthy hemoglobin levels is vital for
+                        regular donors. Discover the best clinical diet practices...</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                <div class="w-full md:w-40 h-32 bg-slate-200 rounded shrink-0"></div>
+                <div>
+                    <span class="text-red-600 text-xs font-bold uppercase">Emergency</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2 hover:underline cursor-pointer">The Golden
+                        Hour Protocol</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Understanding how rapid blood access during the
+                        first hour of trauma can save lives in clinical settings...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-white pt-16 pb-8 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <h4 class="font-bold text-xl mb-4 text-red-500">NOAPARA BLOOD BANK</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">A specialized BLOOD BANK directory connecting
+                        verified blood donors with those in urgent medical need across the network.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-500">Legal & Privacy</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-red-500 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-red-500 transition">Data Deleting Form</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-500">Resource</h4>
+                    <a href="view-source:https://lifeflow.clinical"
+                        class="text-sm font-mono text-slate-500 hover:text-blue-400">
+                        [RAW] View HTML Source
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-8 mt-8">
+                <div class="bg-slate-800/50 p-6 rounded border border-slate-700">
+                    <h5 class="text-xs font-bold text-red-500 uppercase mb-2 tracking-widest">Medical Disclaimer &
+                        Liability</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        <strong>NO MEDICAL ADVICE:</strong> The information provided on this platform is for directory
+                        purposes only and does not constitute medical advice, diagnosis, or treatment.
+                        <strong>NO GUARANTEE:</strong> LifeFlow is a peer-to-peer connection tool; we do not guarantee
+                        that a donor will be available or respond to your request. Users are responsible for verifying
+                        the medical eligibility and health status of donors through certified clinical facilities.
+                    </p>
+                </div>
+                <p class="text-center text-[11px] text-slate-500 mt-8 font-bold tracking-[0.3em]">© 2025 LIFEFLOW
+                    MEDICAL CLINICAL DATABASE. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec";
+        const _u = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec";
 
-        function openTab(name, el) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(name).classList.add('active');
-            el.classList.add('active');
-        }
+        window.onload = () => { fetchDonors(); lockUI(); };
 
-        function handleInput(el) { el.value = el.value.toUpperCase(); }
+        async function fetchDonors() {
+            const group = document.getElementById('bloodFilter').value;
+            const list = document.getElementById('donorList');
+            list.innerHTML = `<div class="col-span-full text-center py-20"><i class="fas fa-circle-notch fa-spin text-4xl text-red-600"></i><p class="mt-4 font-bold text-slate-500">Accessing Clinical Records...</p></div>`;
 
-        function showToast(msg) {
-            const t = document.getElementById("toast");
-            t.innerText = msg; t.classList.add("show");
-            setTimeout(() => t.classList.remove("show"), 4000);
-        }
-
-        function handleProgress(id, show) {
-            const cont = document.getElementById(id + 'Progress');
-            const fill = document.getElementById(id + 'Fill');
-            if (show) {
-                cont.style.display = 'block';
-                fill.style.width = '30%';
-                let w = 30;
-                window.pInterval = setInterval(() => { if (w < 90) { w += 5; fill.style.width = w + '%'; } }, 300);
-            } else {
-                clearInterval(window.pInterval);
-                fill.style.width = '100%';
-                setTimeout(() => { cont.style.display = 'none'; fill.style.width = '0%'; }, 800);
+            try {
+                const res = await fetch(_u, { method: 'POST', body: JSON.stringify({ action: "searchGroup", group: group }) });
+                const result = await res.json();
+                if (result.success) renderDonors(result.data);
+            } catch (e) {
+                list.innerHTML = `<div class="col-span-full text-center text-red-600 font-bold p-10 bg-red-50 rounded">Secure Connection Error. Please refresh.</div>`;
             }
         }
 
-        function calculateAge(dob) {
-            const diff = Date.now() - new Date(dob).getTime();
-            return new Date(diff).getUTCFullYear() - 1970;
+        function renderDonors(donors) {
+            const list = document.getElementById('donorList');
+            if (donors.length === 0) {
+                list.innerHTML = `<div class="col-span-full text-center text-slate-400 py-20 italic">No clinical matches found in this blood group.</div>`;
+                return;
+            }
+
+            list.innerHTML = donors.map((d, i) => {
+                const statusStr = (d.status || "").toLowerCase().trim();
+                const genderStr = (d.gender || "").toLowerCase().trim();
+                const isReady = statusStr === "ready to donate";
+                const isFemale = genderStr === "female";
+                const avatar = isFemale
+                    ? "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"
+                    : "https://cdn-icons-png.flaticon.com/512/4825/4825038.png";
+
+                let actionArea = "";
+                if (isFemale || !isReady) {
+                    actionArea = `<button onclick="alert('Clinical Verification Required: Contact admin for female donor data.')" class="w-full py-3 rounded bg-slate-100 text-slate-600 text-xs font-bold uppercase hover:bg-slate-200 tracking-wider">Request Access</button>`;
+                } else {
+                    actionArea = `<a href="tel:${d.phone}" class="btn-call w-full block tracking-widest flex items-center justify-center gap-2">
+                                    <i class="fas fa-phone-alt text-xs"></i> CONTACT ${d.phone}
+                                 </a>`;
+                }
+
+                return `
+                <div class="donor-card animate-card" style="animation-delay: ${i * 0.04}s">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-3">
+                            <img src="${avatar}" class="w-12 h-12 rounded border border-slate-200">
+                            <div>
+                                <h3 class="donor-name">${d.name}</h3>
+                                <p class="text-xs font-bold text-slate-500 uppercase"><i class="fas fa-location-dot mr-1"></i> ${d.address}</p>
+                            </div>
+                        </div>
+                        <div class="blood-type-banner">${d.bloodgroup}</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 py-3 border-y border-slate-50">
+                        <div>
+                            <p class="label-text">Gender</p>
+                            <p class="data-text">${d.gender}</p>
+                        </div>
+                        <div>
+                            <p class="label-text">Status</p>
+                            <span class="text-sm font-bold ${isReady ? 'text-green-600' : 'text-amber-600'}">
+                                <i class="fas fa-circle text-[8px] mr-1"></i> ${isReady ? 'Ready' : 'Not Ready'}
+                            </span>
+                        </div>
+                    </div>
+
+                    ${actionArea}
+                </div>
+                `;
+            }).join('');
         }
 
-        // --- REGISTRATION ---
-        document.getElementById('regForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const dob = document.getElementById('dob').value;
-            if (calculateAge(dob) < 18) return showToast("You must be 18+ to donate blood! ❤️");
-
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            handleProgress('reg', true);
-
-            const data = { action: "register", name: document.getElementById('name').value, dob: dob, gender: document.getElementById('gender').value, bloodgroup: document.getElementById('bloodgroup').value, address: document.getElementById('address').value, phone: document.getElementById('phone').value, status: document.getElementById('status').value };
-
-            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) })
-                .then(res => res.json()).then(res => {
-                    handleProgress('reg', false);
-                    showToast(res.message);
-                    if (res.success) document.getElementById('regForm').reset();
-                    btn.disabled = false;
-                }).catch(() => { handleProgress('reg', false); btn.disabled = false; });
-        });
-
-        // --- UPDATE ---
-        function findDonorForUpdate() {
-            const phone = document.getElementById('searchUpdatePhone').value;
-            if (phone.length < 11) return showToast("Enter a valid phone number");
-
-            const btn = document.getElementById('findBtn');
-            btn.disabled = true; btn.innerText = "Verifying...";
-            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "findDonor", phone: phone }) })
-                .then(res => res.json()).then(data => {
-                    btn.disabled = false; btn.innerText = "Verify Profile";
-                    if (data.success) {
-                        document.getElementById('updateFormArea').style.display = 'block';
-                        document.getElementById('editName').innerText = data.data.name;
-                        document.getElementById('newStatus').value = data.data.status;
-                        document.getElementById('newPhone').value = phone;
-                    } else showToast("Profile not found");
-                });
+        function lockUI() {
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.onkeydown = e => {
+                if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false;
+            };
         }
-
-        function submitUpdate() {
-            const btn = document.getElementById('saveUpdateBtn');
-            btn.disabled = true; handleProgress('update', true);
-            const data = { action: "updateDonor", oldPhone: document.getElementById('searchUpdatePhone').value, newPhone: document.getElementById('newPhone').value, newStatus: document.getElementById('newStatus').value };
-
-            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) })
-                .then(res => res.json()).then(res => {
-                    handleProgress('update', false);
-                    showToast(res.message);
-                    if (res.success) document.getElementById('updateFormArea').style.display = 'none';
-                    btn.disabled = false;
-                }).catch(() => { handleProgress('update', false); btn.disabled = false; });
-        }
-
-        // --- SEARCH ---
-        function searchDonors() {
-            const group = document.getElementById('searchGroup').value;
-            const resArea = document.getElementById('searchResults');
-            const btn = document.getElementById('searchBtn');
-            btn.disabled = true; btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Finding Donors...';
-            resArea.innerHTML = "";
-
-            fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "searchGroup", group: group }) })
-                .then(res => res.json()).then(data => {
-                    btn.disabled = false; btn.innerText = "Search Database";
-                    if (data.data && data.data.length > 0) {
-                        data.data.forEach(donor => {
-                            const isFemale = donor.gender.toUpperCase() === "FEMALE";
-                            const isReady = donor.status.toUpperCase() === "READY TO DONATE";
-
-                            let actions = (isFemale || !isReady) ?
-                                `<a href="https://wa.me/8801601764777?text=Need%20${donor.bloodgroup}%20from%20${donor.name}" class="action-btn btn-wa" style="flex:none; width:100%"><i class="fab fa-whatsapp"></i> CONTACT ADMIN</a>` :
-                                `<a href="tel:${donor.phone}" class="action-btn btn-call"><i class="fas fa-phone-alt"></i> CALL NOW</a>
-                                 <a href="https://wa.me/88${donor.phone}" class="action-btn btn-wa"><i class="fab fa-whatsapp"></i> MESSAGE</a>`;
-
-                            resArea.innerHTML += `
-                                <div class="result-card">
-                                    <div class="blood-badge">${donor.bloodgroup}</div>
-                                    <div class="donor-info">
-                                        <h3>${donor.name}</h3>
-                                        <div class="meta-row"><i class="fas fa-location-dot"></i> ${donor.address}</div>
-                                        <div class="meta-row"><i class="fas fa-venus-mars"></i> ${donor.gender} Donor</div>
-                                        <div class="status-tag ${isReady ? 'status-ready' : 'status-not'}">
-                                            ${isReady ? '<span class="pulse-dot"></span>Ready' : 'Not Available'}
-                                        </div>
-                                    </div>
-                                    <div class="card-actions">${actions}</div>
-                                </div>`;
-                        });
-                    } else resArea.innerHTML = "<p style='text-align:center; padding:40px; opacity:0.5;'>No donors found in this group.</p>";
-                }).catch(() => { btn.disabled = false; btn.innerText = "Search Database"; });
-        }
-
-        // News & Ads
-        fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "getAdsNews" }) }).then(res => res.json()).then(data => {
-            if (data.news && data.news.length > 0) document.getElementById("newsText").innerText = data.news.join(" • ");
-            const adsBox = document.getElementById("adsContainer");
-            data.ads.forEach(ad => { adsBox.innerHTML = `<div class="ad-card" style="margin-bottom:15px;"><a href="${ad.url}" target="_blank"><img src="${ad.image}" style="width:100%; border-radius:20px; box-shadow:0 10px 20px rgba(0,0,0,0.05);"></a></div>`; });
-        });
     </script>
 </body>
 
