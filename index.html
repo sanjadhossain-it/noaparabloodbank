@@ -6,16 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Raozan Helpline | Trusted Emergency Services</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
-    
+    <link rel="icon" type="image/x-icon"
+        href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            --primary: #0f172a; /* Deep Navy Premium */
-            --accent: #ef4444;  /* Vibrant Emergency Red */
-            --bg-calm: #f1f5f9; 
+            --primary: #0f172a;
+            /* Deep Navy Premium */
+            --accent: #ef4444;
+            /* Vibrant Emergency Red */
+            --bg-calm: #f1f5f9;
             --text-dark: #1e293b;
             --text-light: #64748b;
             --white: #ffffff;
@@ -31,8 +35,10 @@
             -webkit-touch-callout: none;
             box-sizing: border-box;
         }
-        
-        input, textarea, select {
+
+        input,
+        textarea,
+        select {
             -webkit-user-select: text;
             -ms-user-select: text;
             user-select: text;
@@ -41,8 +47,8 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-calm);
-            background-image: radial-gradient(at 0% 0%, rgba(44, 95, 120, 0.05) 0px, transparent 50%), 
-                              radial-gradient(at 100% 100%, rgba(229, 57, 53, 0.05) 0px, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, rgba(44, 95, 120, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(229, 57, 53, 0.05) 0px, transparent 50%);
             color: var(--text-dark);
             margin: 0;
             padding: 0;
@@ -70,7 +76,10 @@
             margin-bottom: 15px;
         }
 
-        .nav-brand img { height: 42px; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)); }
+        .nav-brand img {
+            height: 42px;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+        }
 
         .nav-brand span {
             font-weight: 800;
@@ -86,7 +95,7 @@
             gap: 8px;
             max-width: 95%;
             margin: 0 auto;
-            background: rgba(0,0,0,0.03);
+            background: rgba(0, 0, 0, 0.03);
             padding: 5px;
             border-radius: 50px;
             width: fit-content;
@@ -105,13 +114,13 @@
         /* GLASS EFFECT ON ACTIVE/HOVER */
         .nav-link:hover {
             color: var(--primary);
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .nav-link.active {
             background: var(--white);
             color: var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             backdrop-filter: blur(5px);
         }
 
@@ -123,8 +132,10 @@
         }
 
         /* --- NEWS BAR --- */
-        .top-wrapper { padding: 20px; }
-        
+        .top-wrapper {
+            padding: 20px;
+        }
+
         .news-bar {
             background: var(--white);
             border-radius: 12px;
@@ -138,7 +149,9 @@
             align-items: center;
         }
 
-        .news-bar marquee { color: var(--primary); }
+        .news-bar marquee {
+            color: var(--primary);
+        }
 
         .ad-card {
             width: 100%;
@@ -149,16 +162,18 @@
             border: 4px solid var(--white);
         }
 
-        .ad-card img { 
-            width: 100%; 
-            height: auto; 
+        .ad-card img {
+            width: 100%;
+            height: auto;
             display: block;
             cursor: pointer;
             transition: transform 0.5s ease;
         }
 
         /* --- PREMIUM SERVICE CARDS --- */
-        .services-section { padding: 10px 20px; }
+        .services-section {
+            padding: 10px 20px;
+        }
 
         .section-label {
             font-weight: 800;
@@ -174,7 +189,7 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
@@ -210,10 +225,25 @@
             transition: 0.3s;
         }
 
-        .icon-red { color: #ef4444; background: #fee2e2; }
-        .icon-blue { color: #3b82f6; background: #dbeafe; }
-        .icon-green { color: #10b981; background: #d1fae5; }
-        .icon-orange { color: #f59e0b; background: #fef3c7; }
+        .icon-red {
+            color: #ef4444;
+            background: #fee2e2;
+        }
+
+        .icon-blue {
+            color: #3b82f6;
+            background: #dbeafe;
+        }
+
+        .icon-green {
+            color: #10b981;
+            background: #d1fae5;
+        }
+
+        .icon-orange {
+            color: #f59e0b;
+            background: #fef3c7;
+        }
 
         .service-card span {
             font-weight: 700;
@@ -222,7 +252,9 @@
         }
 
         /* --- PREMIUM FORMS --- */
-        .donor-box, .content-section, .faq-section {
+        .donor-box,
+        .content-section,
+        .faq-section {
             margin: 25px 20px;
             background: var(--white);
             border-radius: 28px;
@@ -231,14 +263,18 @@
             border: 1px solid var(--white);
         }
 
-        .form-group { margin-bottom: 18px; }
-        
-        input, select, textarea {
-            width: 100%; 
-            padding: 16px; 
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 16px;
             border: 2px solid #f1f5f9;
-            border-radius: 14px; 
-            font-size: 0.95rem; 
+            border-radius: 14px;
+            font-size: 0.95rem;
             background: #f8fafc;
             font-family: inherit;
             transition: all 0.3s ease;
@@ -246,21 +282,23 @@
             font-weight: 500;
         }
 
-        input:focus, select:focus, textarea:focus {
+        input:focus,
+        select:focus,
+        textarea:focus {
             outline: none;
             border-color: var(--primary);
             background: #fff;
             box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.05);
         }
-        
+
         .btn {
-            width: 100%; 
-            padding: 18px; 
-            background: var(--primary); 
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
             color: white;
-            border: none; 
-            border-radius: 14px; 
-            font-weight: 800; 
+            border: none;
+            border-radius: 14px;
+            font-weight: 800;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -269,8 +307,14 @@
             box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
         }
 
-        .btn:hover { background: #000; transform: translateY(-2px); }
-        .btn:active { transform: scale(0.98); }
+        .btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
 
         /* --- FAQ & TEXT --- */
         .faq-item {
@@ -280,46 +324,115 @@
             border-radius: 16px;
             border: 1px solid #edf2f7;
         }
-        .faq-question { font-weight: 800; color: var(--primary); margin-bottom: 8px; font-size: 0.95rem; }
-        .faq-answer { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
 
-        .content-text { font-size: 1rem; color: var(--text-light); line-height: 1.8; font-weight: 500; }
+        .faq-question {
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
 
-        .footer { 
-            padding: 40px 20px; 
-            text-align: center; 
-            color: var(--text-light); 
-            font-size: 0.85rem; 
+        .faq-answer {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.85rem;
             font-weight: 600;
         }
 
         .whatsapp-fab {
-            position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white;
-            width: 60px; height: 60px; border-radius: 20px; display: flex; align-items: center;
-            justify-content: center; font-size: 28px; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
-            z-index: 1001; text-decoration: none; transition: 0.4s;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+            z-index: 1001;
+            text-decoration: none;
+            transition: 0.4s;
         }
-        .whatsapp-fab:hover { transform: rotate(10deg) scale(1.1); }
+
+        .whatsapp-fab:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
 
         #toast {
-            visibility: hidden; position: fixed; bottom: 40px; left: 50%;
-            transform: translateX(-50%); background: var(--primary); color: #fff;
-            padding: 16px 32px; border-radius: 16px; font-size: 0.9rem; z-index: 3000;
-            font-weight: 700; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            visibility: hidden;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            z-index: 3000;
+            font-weight: 700;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
-        #toast.show { visibility: visible; animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+        #toast.show {
+            visibility: visible;
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
         @keyframes slideUp {
-            from { bottom: -50px; opacity: 0; }
-            to { bottom: 40px; opacity: 1; }
+            from {
+                bottom: -50px;
+                opacity: 0;
+            }
+
+            to {
+                bottom: 40px;
+                opacity: 1;
+            }
         }
 
         @media (max-width: 480px) {
-            .service-grid { gap: 10px; }
-            .service-card { padding: 15px 5px; border-radius: 15px; }
-            .icon-box { width: 45px; height: 45px; font-size: 18px; }
-            .nav-link { padding: 8px 12px; font-size: 0.65rem; }
-            .nav-brand span { font-size: 1.1rem; }
+            .service-grid {
+                gap: 10px;
+            }
+
+            .service-card {
+                padding: 15px 5px;
+                border-radius: 15px;
+            }
+
+            .icon-box {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.65rem;
+            }
+
+            .nav-brand span {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -327,7 +440,8 @@
 <body oncontextmenu="return false;">
     <nav class="glass-nav">
         <a href="index.html" class="nav-brand">
-            <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png" alt="Logo">
+            <img src="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png"
+                alt="Logo">
             <span>RAOZAN HELPLINE</span>
         </a>
         <div class="nav-links">
@@ -341,7 +455,8 @@
     <div class="container">
         <div class="top-wrapper">
             <div class="news-bar">
-                <marquee id="newsText" scrollamount="4">Welcome to Raozan Helpline - Your Trusted Community Companion...</marquee>
+                <marquee id="newsText" scrollamount="4">Welcome to Raozan Helpline - Your Trusted Community Companion...
+                </marquee>
             </div>
             <div id="adsContainer" class="ad-card">
                 <img id="adImage" src="https://i.ibb.co/KzGjHDDq/imgx.webp" alt="Banner" style="display:none;">
@@ -351,7 +466,7 @@
         <div class="services-section">
             <div class="section-label"><i class="fas fa-grid-2"></i> Quick Services</div>
             <div class="service-grid">
-                <a href="Hospital.html" class="service-card">
+                <a href="hospital.html" class="service-card">
                     <div class="icon-box icon-blue"><i class="fas fa-hospital"></i></div>
                     <span>Hospital</span>
                 </a>
@@ -364,7 +479,8 @@
                     <span>Ambulance</span>
                 </a>
                 <a href="police.html" class="service-card">
-                    <div class="icon-box icon-blue" style="color:#1a237e; background:#E8EAF6;"><i class="fas fa-shield-alt"></i></div>
+                    <div class="icon-box icon-blue" style="color:#1a237e; background:#E8EAF6;"><i
+                            class="fas fa-shield-alt"></i></div>
                     <span>Police</span>
                 </a>
                 <a href="fire.html" class="service-card">
@@ -376,15 +492,18 @@
                     <span>Doctors</span>
                 </a>
                 <a href="tourist.html" class="service-card">
-                    <div class="icon-box icon-green" style="color:#2ecc71; background:#E8F5E9;"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="icon-box icon-green" style="color:#2ecc71; background:#E8F5E9;"><i
+                            class="fas fa-map-marked-alt"></i></div>
                     <span>Tourist Spots</span>
                 </a>
                 <a href="rent-a-car.html" class="service-card">
-                    <div class="icon-box icon-orange" style="color:#f39c12; background:#FFF3E0;"><i class="fas fa-car"></i></div>
+                    <div class="icon-box icon-orange" style="color:#f39c12; background:#FFF3E0;"><i
+                            class="fas fa-car"></i></div>
                     <span>Rent A Car</span>
                 </a>
                 <a href="social.html" class="service-card">
-                    <div class="icon-box icon-blue" style="color:#9b59b6; background:#F3E5F5;"><i class="fas fa-users"></i></div>
+                    <div class="icon-box icon-blue" style="color:#9b59b6; background:#F3E5F5;"><i
+                            class="fas fa-users"></i></div>
                     <span>Social Org</span>
                 </a>
             </div>
@@ -394,8 +513,8 @@
             <div class="section-label"><i class="fas fa-user-plus"></i> Donor Registration</div>
             <form id="regForm">
                 <div class="form-group">
-                    <input type="text" id="name" placeholder="FULL NAME (ENGLISH)" required 
-                    oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, '')">
+                    <input type="text" id="name" placeholder="FULL NAME (ENGLISH)" required
+                        oninput="this.value = this.value.toUpperCase().replace(/[^A-Z\s]/g, '')">
                 </div>
                 <div class="form-group">
                     <input type="text" id="dob" placeholder="DATE OF BIRTH" onfocus="(this.type='date')" required>
@@ -405,23 +524,31 @@
                         <option value="">SELECT GENDER</option>
                         <option value="MALE">MALE</option>
                         <option value="FEMALE">FEMALE</option>
-                        <option value="OTHER">OTHER</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <select id="bloodgroup" required>
                         <option value="">SELECT BLOOD GROUP</option>
-                        <option value="A+">A+</option><option value="A-">A-</option>
-                        <option value="B+">B+</option><option value="B-">B-</option>
-                        <option value="O+">O+</option><option value="O-">O-</option>
-                        <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <textarea id="address" placeholder="FULL ADDRESS (CAPITAL)" required oninput="this.value = this.value.toUpperCase()"></textarea>
+                    <textarea id="address" placeholder="FULL ADDRESS (CAPITAL)" required
+                        oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s,.-]/g, '')"></textarea>
+
                 </div>
                 <div class="form-group">
-                    <input type="tel" id="phone" maxlength="11" placeholder="MOBILE NUMBER (01XXXXXXXXX)" required>
+                    <input type="tel" id="phone" maxlength="11" minlength="11" pattern="01[0-9]{9}"
+                        placeholder="MOBILE NUMBER (01XXXXXXXXX)" required
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        title="Phone number must start with 01 and be exactly 11 digits long.">
                 </div>
                 <div class="form-group">
                     <select id="status" required>
@@ -437,22 +564,27 @@
             <div class="section-label"><i class="fas fa-question-circle"></i> FAQ</div>
             <div class="faq-item">
                 <div class="faq-question">How do I find a blood donor?</div>
-                <div class="faq-answer">Click on the 'Blood' icon in the services section to view available donors in our area.</div>
+                <div class="faq-answer">Click on the 'Blood' icon in the services section to view available donors in
+                    our area.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Is this service free?</div>
-                <div class="faq-answer">Yes, Raozan Helpline is a community initiative providing information free of charge.</div>
+                <div class="faq-answer">Yes, Raozan Helpline is a community initiative providing information free of
+                    charge.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">How can I update my donor status?</div>
-                <div class="faq-answer">You can contact our support via the WhatsApp button to update your information.</div>
+                <div class="faq-answer">You can contact our support via the WhatsApp button to update your information.
+                </div>
             </div>
         </div>
 
         <div class="content-section">
             <div class="section-label"><i class="fas fa-history"></i> Our Journey</div>
             <div class="content-text">
-                Raozan Helpline was established in 2025 with a mission to bridge the gap between emergency service providers and the citizens of Raozan. Our goal is to ensure that no one in our community feels helpless during a crisis.
+                Raozan Helpline was established in 2025 with a mission to bridge the gap between emergency service
+                providers and the citizens of Raozan. Our goal is to ensure that no one in our community feels helpless
+                during a crisis.
             </div>
         </div>
 
@@ -491,11 +623,11 @@
                     if (result.ads && result.ads.length > 0) {
                         const ad = result.ads[0];
                         const adImg = document.getElementById('adImage');
-                        if(ad.image) {
+                        if (ad.image) {
                             adImg.src = ad.image;
                             adImg.style.display = "block";
                             adImg.onclick = () => {
-                                if(ad.url) window.open(ad.url, '_blank');
+                                if (ad.url) window.open(ad.url, '_blank');
                             };
                         }
                     }
@@ -506,7 +638,7 @@
             }
         }
 
-        document.getElementById('regForm').addEventListener('submit', async function(e) {
+        document.getElementById('regForm').addEventListener('submit', async function (e) {
             e.preventDefault();
             const dobVal = document.getElementById('dob').value;
             const dob = new Date(dobVal);
@@ -544,7 +676,7 @@
             try {
                 await fetch(SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', 
+                    mode: 'no-cors',
                     body: JSON.stringify(formData)
                 });
                 showToast("✅ Registered Successfully!");
@@ -561,4 +693,3 @@
 </body>
 
 </html>
-
