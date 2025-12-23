@@ -51,6 +51,25 @@
             font-weight: 800; color: var(--primary); font-size: 1.2rem;
             text-transform: uppercase;
         }
+         .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
 
         .nav-links {
             display: flex; justify-content: center; gap: 5px;
@@ -146,7 +165,18 @@
             <div class="loader"><i class="fas fa-circle-notch fa-spin"></i> Loading facilities...</div>
         </div>
 
-        <div class="footer">© 2025 RAOZAN HELPLINE</div>
+       <div class="footer">
+            © 2025 RAOZAN CARE<br>
+            <span style="opacity: 0.6; font-size: 0.75rem; letter-spacing: 1px;">PREMIUM COMMUNITY SERVICE</span>
+
+            <div class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="contact.html">Contact Us</a>
+                <span>|</span>
+                <a href="about.html">About Us</a>
+            </div>
+        </div>
     </div>
 
     <script>

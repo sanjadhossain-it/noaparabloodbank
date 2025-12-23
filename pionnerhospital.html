@@ -8,7 +8,7 @@
     <title>Pioneer Hospital and Diagnostic Center LTD | Premium Healthcare Noapara</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Ndrx7JS9/pionnerlogo.webp">
     <meta name="description"
-        content="Official portal for Raozan Modern Hospital. Specialized doctors, advanced diagnostics, and 24/7 emergency services in Raozan.">
+        content="Official portal for Pioneer Hospital and Diagnostic Center LTD. Specialized doctors, advanced diagnostics, and 24/7 emergency services in Raozan,Naoapra.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
@@ -16,19 +16,36 @@
 
     <style>
         :root {
-            --primary: #E11D48;
-            --secondary: #0F172A;
-            --accent: #0284C7;
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
-            --radius-xl: 32px;
-            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            --glass: rgba(255, 255, 255, 0.9);
-            --pulse_color: rgba(0, 141, 177, 0.3);
-            --success: #10B981;
+            /* --- BLUE & WHITE CALM THEME --- */
+            /* Primary Blue - Professional & Calming */
+            --primary: #0077b6;
+            --primary-dark: #023e8a;
+            --primary-light: #caf0f8;
+
+            /* Backgrounds */
+            --bg: #f0f8ff;
+            /* Alice Blue - Very faint blue */
+            --surface: #ffffff;
+            /* Pure White */
+            --surface-glass: rgba(255, 255, 255, 0.85);
+            /* Glass effect */
+
+            /* Text */
+            --text-main: #001d3d;
+            /* Dark Blue-Black for readability */
+            --text-muted: #537188;
+            /* Soft Grey-Blue */
+
+            /* Accents */
+            --accent: #00b4d8;
+            --success: #00b894;
+            --danger: #ff7675;
+
+            /* UI Elements */
+            --radius-xl: 24px;
+            --shadow-sm: 0 2px 8px rgba(0, 119, 182, 0.05);
+            --shadow-lg: 0 10px 30px -10px rgba(0, 119, 182, 0.15);
+            --card-grad: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
         }
 
         body {
@@ -39,6 +56,11 @@
             color: var(--text-main);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            /* Disable Selection/Copying */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         /* --- ELITE PROFESSIONAL HEADER --- */
@@ -46,31 +68,11 @@
             position: sticky;
             top: 0;
             z-index: 2000;
-            background: var(--surface);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .header-utility {
-            background: var(--secondary);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 6px 20px;
-            font-size: 0.65rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            letter-spacing: 0.8px;
-        }
-
-        .utility-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .utility-item i {
-            color: var(--primary);
-            font-size: 0.7rem;
+            background: var(--surface-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(173, 216, 230, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .main-nav {
@@ -78,7 +80,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--surface);
         }
 
         .brand-identity {
@@ -91,69 +92,48 @@
             position: relative;
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, #00c0c7 0%, #001d9e 100%);
-            border-radius: 0px;
+            border-radius: 0%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.3rem;
-            box-shadow: 0 8px 15px rgba(38, 0, 255, 0.25);
-        }
-
-        .logo-container::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 0px;
-            border: 2px solid var(--pulse_color);
-            animation: pulse-border 2s infinite;
-        }
-
-        @keyframes pulse-border {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
+            
         }
 
         .brand-text h1 {
             font-size: 1.15rem;
             margin: 0;
-            font-weight: 900;
-            color: var(--secondary);
-            line-height: 0.9;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
             letter-spacing: -0.5px;
         }
 
         .brand-text span {
-            font-size: 0.62rem;
+            font-size: 0.55rem;
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: -0.1px;
             margin-top: 4px;
             display: block;
         }
 
         .btn-emergency-call {
-            background: #FFF1F2;
+            background: var(--primary-light);
             color: var(--primary);
-            padding: 8px 14px;
-            border-radius: 12px;
-            text-decoration: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            border: 1px solid #FFE4E6;
+            justify-content: center;
+            text-decoration: none;
+            border: 1px solid #bde0fe;
+            transition: all 0.3s ease;
+        }
+
+        .btn-emergency-call:hover {
+            background: var(--primary);
+            color: white;
         }
 
         /* --- HERO SLIDER --- */
@@ -162,7 +142,10 @@
             height: 260px;
             position: relative;
             overflow: hidden;
-            background: #000;
+            background: var(--bg);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: var(--shadow-sm);
         }
 
         .slider-wrapper {
@@ -185,13 +168,6 @@
             display: block;
         }
 
-        .slide::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(15, 23, 42, 0.6) 0%, transparent 60%);
-        }
-
         .slider-dots {
             position: absolute;
             bottom: 45px;
@@ -205,22 +181,24 @@
         .dot {
             width: 8px;
             height: 8px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
             transition: 0.3s;
+            backdrop-filter: blur(2px);
         }
 
         .dot.active {
-            background: var(--primary);
-            width: 20px;
+            background: white;
+            width: 24px;
             border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         /* --- ACTION HUB --- */
         .action-hub {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
             padding: 0 20px;
             margin-top: -35px;
             position: relative;
@@ -230,13 +208,20 @@
         .action-card {
             background: var(--surface);
             padding: 18px;
-            border-radius: 24px;
+            border-radius: 20px;
             text-decoration: none;
             display: flex;
+            flex-direction: row;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             box-shadow: var(--shadow-lg);
-            border: 1px solid #edf2f7;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.2s;
+        }
+
+        .action-card:active {
+            transform: scale(0.98);
         }
 
         .action-card i {
@@ -246,15 +231,16 @@
 
         .action-card span {
             font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--secondary);
+            font-size: 0.9rem;
+            color: var(--text-main);
         }
 
         .section-label {
             padding: 30px 20px 15px;
             font-weight: 800;
             font-size: 1.1rem;
-            color: var(--secondary);
+            color: var(--primary-dark);
+            letter-spacing: -0.3px;
         }
 
         /* --- HORIZONTAL SCROLL --- */
@@ -271,89 +257,102 @@
         }
 
         .diag-pill {
-            min-width: 120px;
+            min-width: 110px;
             background: var(--surface);
             padding: 20px 15px;
-            border-radius: 28px;
+            border-radius: 24px;
             text-align: center;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e0efff;
             text-decoration: none;
             box-shadow: var(--shadow-sm);
         }
 
         .diag-pill i {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .diag-pill span {
             font-size: 0.8rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--text-main);
             display: block;
         }
 
         .diag-call {
             font-size: 0.65rem;
-            color: var(--primary);
-            font-weight: 800;
+            color: var(--text-muted);
+            font-weight: 600;
             margin-top: 6px;
             display: block;
         }
 
-        /* --- FILTER TABS --- */
-        .filter-tabs {
+        /* --- MODERN SEARCH SECTION --- */
+        .search-section {
+            padding: 0 20px 20px;
+        }
+
+        .search-box-wrapper {
+            position: relative;
+            background: var(--surface);
+            border-radius: 18px;
+            border: 1px solid #dbeafe;
             display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 5px 20px 20px;
-            scrollbar-width: none;
+            align-items: center;
+            padding: 5px 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .filter-tabs::-webkit-scrollbar {
-            display: none;
+        .search-box-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
         }
 
-        .tab {
-            padding: 10px 22px;
-            background: #E2E8F0;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            white-space: nowrap;
+        .search-box-wrapper i {
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .search-select {
+            width: 100%;
+            padding: 14px 0;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
             cursor: pointer;
-            transition: 0.3s;
+            appearance: none;
         }
 
-        .tab.active {
-            background: var(--secondary);
-            color: white;
-        }
-
-        /* --- DOCTOR CARDS --- */
+        /* --- MODERN PREMIUM DOCTOR CARDS --- */
         .doctor-container {
             padding: 0 20px 30px;
             min-height: 200px;
         }
 
         .doc-card {
-            position: relative;
-            background: var(--surface);
-            border-radius: 28px;
-            padding: 20px;
+            background: var(--card-grad);
+            border-radius: 24px;
+            padding: 22px;
             margin-bottom: 20px;
-            border: 1px solid #f1f5f9;
-            box-shadow: var(--shadow-sm);
-            animation: fadeIn 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: var(--shadow-lg);
+            animation: fadeIn 0.5s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
 
             to {
@@ -364,176 +363,179 @@
 
         .doc-header {
             display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 15px;
+            gap: 18px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eff6ff;
+            padding-bottom: 15px;
         }
 
         .doc-avatar {
             position: relative;
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            background: #F1F5F9;
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: #f1f8ff;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+            box-shadow: inset 0 0 10px rgba(0, 119, 182, 0.05);
+            border: 1px solid #e0efff;
         }
 
-        /* Corner Dot Indicators */
         .corner-dot {
             position: absolute;
-            bottom: -2px;
-            right: -2px;
+            top: -3px;
+            right: -3px;
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            border: 3px solid var(--surface);
+            border: 2px solid white;
             z-index: 5;
         }
-        .dot-available { background-color: #10B981; }
-        .dot-away { background-color: #EF4444; }
+
+        .dot-available {
+            background-color: var(--success);
+            box-shadow: 0 0 5px var(--success);
+        }
+
+        .dot-away {
+            background-color: var(--danger);
+        }
+
+        .doc-meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
         .doc-meta h3 {
-            margin: 0;
-            font-size: 1.05rem;
+            margin: 0 0 6px 0;
+            font-size: 1.2rem;
             font-weight: 800;
-            color: var(--secondary);
-            max-width: 180px;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        /* Doctor details placed below name strictly */
+        .doc-details-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
 
         .doc-degree {
-            font-size: 0.72rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--text-main);
             font-weight: 600;
-            margin: 2px 0 4px;
-            line-height: 1.3;
+        }
+
+        .doc-specialty-wrapper {
+            margin: 4px 0;
         }
 
         .doc-specialty-tag {
+            display: inline-block;
             font-size: 0.7rem;
-            color: var(--accent);
-            font-weight: 800;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .doc-collage {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+
+        }
+
         .schedule-grid {
-            background: #F8FAFC;
-            border-radius: 20px;
-            padding: 18px;
+            background: #f8fbff;
+            border-radius: 16px;
+            padding: 15px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 15px;
+            border: 1px solid #eef6ff;
         }
 
         .s-item b {
             display: block;
-            font-size: 0.6rem;
-            color: var(--text-muted);
+            font-size: 0.65rem;
+            color: var(--primary);
             text-transform: uppercase;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .s-item span {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: var(--text-main);
         }
 
         .btn-booking {
-            margin-top: 15px;
-            background: var(--secondary);
+            margin-top: 18px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             text-align: center;
-            padding: 16px;
-            border-radius: 18px;
+            padding: 15px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             display: block;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
+            transition: all 0.3s;
         }
 
-        .loader-text {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            font-weight: 600;
+        .btn-booking:active {
+            transform: scale(0.98);
         }
 
         /* --- FOOTER --- */
         .site-footer {
-            background: #FFFFFF;
+            background: white;
             padding: 60px 20px 30px;
-            border-top: 1px solid #E2E8F0;
+            border-top: 1px solid #eef6ff;
             border-radius: 40px 40px 0 0;
             margin-top: 20px;
-        }
-
-        .footer-top {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .footer-top .brand-name {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .footer-top .brand-tagline {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-            display: block;
-        }
-
-        .footer-contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.02);
         }
 
         .f-link-card {
-            background: #F8FAFC;
-            padding: 20px;
-            border-radius: 24px;
+            background: #f0f8ff;
+            padding: 18px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
             text-decoration: none;
-            border: 1px solid #F1F5F9;
+            border: 1px solid #e0efff;
         }
 
         .f-link-card .icon-box {
-            width: 50px;
-            height: 50px;
-            background: #FFFFFF;
-            border-radius: 16px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .f-link-card .content b {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--secondary);
-        }
-
-        .f-link-card .content span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1);
         }
 
         .emergency-banner {
-            background: linear-gradient(135deg, var(--primary), #BE123C);
+            background: linear-gradient(135deg, var(--primary), #48cae4);
             padding: 22px;
             border-radius: 24px;
             display: flex;
@@ -541,40 +543,25 @@
             align-items: center;
             color: white;
             text-decoration: none;
-            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.25);
-            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 119, 182, 0.25);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .social-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
+        .emergency-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
         }
-
-        .social-row a {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #F1F5F9;
-        }
-
-        .footer-bottom p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin: 0;
-        }
-
     </style>
 </head>
 
-<body>
-
+<body oncontextmenu="return false;">
     <header class="app-header">
         <nav class="main-nav">
             <div class="brand-identity">
@@ -587,7 +574,7 @@
                 </div>
             </div>
             <div class="nav-actions">
-                <a href="pioneeradmin.html" class="btn-emergency-call">
+                <a href="pionneradmin.html" class="btn-emergency-call">
                     <i class="fas fa-user-shield"></i>
                 </a>
             </div>
@@ -620,77 +607,108 @@
 
     <div id="diagnostics" class="section-label">Diagnostic Excellence</div>
     <div class="horizontal-scroll">
-        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span class="diag-call">Tests Price</span></a>
-        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><span class="diag-call">Tests
+                Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><span
+                class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><span
+                class="diag-call">Tests Price</span></a>
+        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><span class="diag-call">Tests
+                Price</span></a>
     </div>
 
-    <div id="doctors" class="section-label">Specialist Doctors</div>
-    <div class="filter-tabs" id="categoryTabs">
-        <div class="tab active" onclick="fetchAndFilter('All', this)">All Specialists</div>
-        <div class="tab" onclick="fetchAndFilter('Medicine', this)">General & Internal Medicine</div>
-        <div class="tab" onclick="fetchAndFilter('Gynae', this)">Family & Reproductive Health</div>
-        <div class="tab" onclick="fetchAndFilter('Orthopedic', this)">Surgical & Structural Care</div>
-        <div class="tab" onclick="fetchAndFilter('Pediatrics', this)">Specialized Lifestyle & Skin Care</div>
+    <div id="doctors" class="section-label">Find Your Specialist</div>
+    <div class="search-section">
+        <div class="search-box-wrapper">
+            <i class="fas fa-user-doctor"></i>
+            <select id="categorySearch" class="search-select" onchange="fetchAndFilter(this.value)">
+                <option value="All">All Specialty Categories</option>
+                <option value="MEDICINE">MEDICINE</option>
+                <option value="CARDIOLOGY">CARDIOLOGY</option>
+                <option value="NEUROLOGY">NEUROLOGY</option>
+                <option value="GASTROENTEROLOGY">GASTROENTEROLOGY</option>
+                <option value="GYNECOLOGY">GYNECOLOGY</option>
+                <option value="PEDIATRICS">PEDIATRICS</option>
+                <option value="UROLOGY">UROLOGY</option>
+                <option value="GENERAL SURGERY">GENERAL SURGERY</option>
+                <option value="ORTHOPEDICS">ORTHOPEDICS</option>
+                <option value="ENT">ENT</option>
+                <option value="DIABETOLOGY">DIABETOLOGY</option>
+                <option value="PSYCHIATRY">PSYCHIATRY</option>
+                <option value="DERMATOLOGY">DERMATOLOGY</option>
+                <option value="DENTAL">DENTAL</option>
+                <option value="EYE / OPTIC">EYE / OPTIC</option>
+            </select>
+        </div>
     </div>
 
     <div class="doctor-container" id="doctorContainer">
-        <div class="loader-text">Loading specialist profiles...</div>
+        <div class="loader-text" style="text-align: center; padding: 40px; color: var(--text-muted);">Loading specialist
+            profiles...</div>
     </div>
 
     <footer class="site-footer">
-        <div class="footer-top">
-            <span class="brand-name">PIONEER HOSPITAL</span>
-            <span class="brand-tagline">Trusted Healthcare Partner since 2010</span>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span style="font-size: 1.4rem; font-weight: 800; color: var(--primary);">Pioneer HOSPITAL</span>
+            <span style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">Trusted
+                Healthcare Partner since 2010</span>
         </div>
 
-        <div class="footer-contact-grid">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px;">
             <a href="tel:008801961418137" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-headset"></i></div>
-                <div class="content"><b>Hospital Hotline</b><span>+880 1961418137</span></div>
+                <div class="content"><b> Hotline</b><span
+                        style="font-size: 0.8rem; color: var(--text-muted); display:block;">+880 1961418137</span></div>
             </a>
             <a href="#" class="f-link-card">
                 <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
-                <div class="content"><b>Our Location</b><span>Patherhat, Noapara, Raozan</span></div>
+                <div class="content"><b>Our Location</b><span
+                        style="font-size: 0.8rem; color: var(--text-muted); display:block;">Patherhat, Noapara,
+                        Raozan</span></div>
             </a>
         </div>
 
         <a href="tel:008801511772222" class="emergency-banner">
             <div style="display: flex; flex-direction: column;">
-                <span style="font-size: 0.75rem; opacity: 0.9; text-transform: uppercase;">24/7 Rapid Response</span>
-                <b style="font-size: 1.1rem;">Emergency Serial</b>
+                <span style="font-size: 0.75rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px;">24/7
+                    Rapid Response</span>
+                <b style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Emergency Serial</b>
             </div>
-            <i class="fas fa-arrow-right-long fa-lg"></i>
+
+            <div
+                style="background: rgba(255, 255, 255, 0.25); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter:blur(5px);">
+                <i class="fas fa-arrow-right-long fa-lg"></i>
+            </div>
         </a>
 
-        <div class="social-row">
-            <a href="https://www.facebook.com/pioneerhospitalctg/"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/8801817751509"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:pioneerhospitalltdctg@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 25px;">
+            <a href="https://www.facebook.com/pioneerhospitalctg/" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/8801817751509" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="mailto:pioneerhospitalltdctg@gmail.com" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fas fa-envelope"></i></a>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2025 RAOZAN HELPLINE</p>
+        <div style="text-align: center; padding-top: 30px; border-top: 1px solid #f1f5f9;">
+            <p style="font-size: 0.75rem; color: var(--text-muted);">© 2025 Pioneer Hospital LTD <br>All rights
+                reserved.</br></p>
         </div>
     </footer>
 
     <script>
-        // --- 1. CONFIGURATION ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWUbwSAu9XJMyAqv93OwjGO4v-9sp9ccoWXYcWVve-Ff2rfnCx6ZqcjUzAfUY-fUnT6g/exec"; 
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKhx-fgHDQNoXVJQ5ZmSaerUiNbjhZSf1iIjzc8489uaGQn5OG9aQlDJSzjyXQ1trCdg/exec";
 
-        // --- 2. HERO SLIDER LOGIC ---
+        // Slider Logic
         let currentSlide = 0;
         const totalSlides = 3;
         const sliderWrapper = document.getElementById('slider');
         const dots = document.querySelectorAll('.dot');
 
         function updateSlider() {
-            if(!sliderWrapper) return;
+            if (!sliderWrapper) return;
             sliderWrapper.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            dots.forEach((dot, index) => { dot.classList.toggle('active', index === currentSlide); });
         }
 
         setInterval(() => {
@@ -698,39 +716,69 @@
             updateSlider();
         }, 4500);
 
-        // --- 3. DYNAMIC DOCTOR FETCHING & FILTERING ---
-        async function fetchAndFilter(category, btn) {
-            // UI Update
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            if (btn) btn.classList.add('active');
+        function getDoctorIcon(category) {
+            const cat = String(category).toUpperCase();
+            const icons = {
+                "MEDICINE": "fa-stethoscope",
+                "CARDIOLOGY": "fa-heart-pulse",
+                "NEUROLOGY": "fa-brain",
+                "GASTROENTEROLOGY": "fa-bacteria",
+                "GYNECOLOGY": "fa-person-pregnant",
+                "PEDIATRICS": "fa-baby",
+                "UROLOGY": "fa-kidneys",
+                "GENERAL SURGERY": "fa-scalpel-path",
+                "ORTHOPEDICS": "fa-bone",
+                "ENT": "fa-ear-listen",
+                "DIABETOLOGY": "fa-syringe",
+                "PSYCHIATRY": "fa-head-side-virus",
+                "DERMATOLOGY": "fa-hand-dots",
+                "DENTAL": "fa-tooth",
+                "EYE / OPTIC": "fa-eye"
+            };
+            return icons[cat] || "fa-user-md";
+        }
 
+        // Shuffle logic to reposition list automatically
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        async function fetchAndFilter(category) {
             const container = document.getElementById('doctorContainer');
-            container.innerHTML = '<div class="loader-text"><i class="fas fa-spinner fa-spin"></i> Finding doctors...</div>';
+            container.innerHTML = '<div class="loader-text" style="text-align: center; padding: 40px; color: var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> Loading Premium Profiles...</div>';
 
             try {
                 const res = await fetch(SCRIPT_URL, {
                     method: "POST",
-                    body: JSON.stringify({ action: "getDoctors", category: "All" })
+                    body: JSON.stringify({ action: "getDoctors" })
                 });
 
                 const result = await res.json();
 
                 if (result.success) {
-                    const filteredData = (category === 'All') 
-                        ? result.data 
-                        : result.data.filter(doc => doc.category.toLowerCase() === category.toLowerCase());
+                    let data = result.data;
 
-                    if(filteredData.length > 0) {
+                    // Shuffle the data so 1st doctor doesn't always stay on top
+                    data = shuffleArray(data);
+
+                    const filteredData = (category === 'All')
+                        ? data
+                        : data.filter(doc => String(doc.category).toUpperCase() === category.toUpperCase());
+
+                    if (filteredData.length > 0) {
                         renderDoctors(filteredData);
                     } else {
-                        container.innerHTML = '<div class="loader-text">No doctors found in this category.</div>';
+                        container.innerHTML = '<div class="loader-text" style="text-align: center; padding: 40px; color: var(--text-muted);">No specialists found in this category.</div>';
                     }
                 } else {
                     container.innerHTML = '<div class="loader-text">Failed to retrieve data.</div>';
                 }
             } catch (error) {
-                container.innerHTML = '<div class="loader-text">Error loading data. Please check connection.</div>';
-                console.error("Fetch Error:", error);
+                container.innerHTML = '<div class="loader-text">Error connecting to server.</div>';
             }
         }
 
@@ -742,11 +790,10 @@
                 const card = document.createElement('article');
                 card.className = 'doc-card';
 
-                let icon = (doc.category && doc.category.toLowerCase() === 'gynae') ? 'fa-user-nurse' : 'fa-user-md';
-                
-                // Logic for green/red dot based on status
+                const icon = getDoctorIcon(doc.category);
                 const dotClass = (doc.status && doc.status.toLowerCase() === 'available') ? 'dot-available' : 'dot-away';
 
+                // DOCTOR INFO BELOW NAME STRUCTURE APPLIED HERE
                 card.innerHTML = `
                     <div class="doc-header">
                         <div class="doc-avatar">
@@ -755,17 +802,20 @@
                         </div>
                         <div class="doc-meta">
                             <h3>${doc.name}</h3>
-                            <div class="doc-degree">${doc.degree}</div>
-                            <div class="doc-specialty-tag">${doc.specialty}</div>
+                            <div class="doc-details-wrapper">
+                                <div class="doc-degree">${doc.degree}</div>
+                                <div class="doc-collage">${doc.collage || 'Senior Consultant'}</div>
+                                <div class="doc-specialty-wrapper"><span class="doc-specialty-tag">${doc.specialty}</span></div>
+                            </div>
                         </div>
                     </div>
                     <div class="schedule-grid">
-                        <div class="s-item"><b>Days</b><span>${doc.days}</span></div>
+                        <div class="s-item"><b>Visit Days</b><span>${doc.days}</span></div>
                         <div class="s-item"><b>Timing</b><span>${doc.timing}</span></div>
-                        <div class="s-item"><b>Room</b><span>${doc.room}</span></div>
-                        <div class="s-item"><b>Consultation Fee</b><span>৳ ${doc.fee}</span></div>
+                        <div class="s-item"><b>Room No</b><span>${doc.room}</span></div>
+                        <div class="s-item"><b>Consultation</b><span>৳ ${doc.fee}</span></div>
                     </div>
-                    <a href="tel:${doc.phone}" class="btn-booking">Book Appointment</a>
+                    <a href="tel:${doc.phone}" class="btn-booking"><i class="fas fa-calendar-check" style="margin-right: 8px;"></i> Book Appointment</a>
                 `;
                 container.appendChild(card);
             });
@@ -774,6 +824,14 @@
         window.onload = () => {
             fetchAndFilter('All');
         };
+
+        // Prevent standard keyboard copy shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 'u' || e.key === 'a')) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
+
 </html>
