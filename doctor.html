@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Doctor Directory | Professional Care</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-soft: #475569; /* Calm Slate */
+            --accent-blue: #3b82f6; /* Trust Blue */
+            --glass: rgba(255, 255, 255, 0.85);
+            --bg-app: #f8fafc; /* Lighter, cleaner background */
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            touch-action: pan-x pan-y;
+        }
+
+        body {
+            background-color: var(--bg-app);
+            margin: 0; padding: 0;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        body::-webkit-scrollbar { display: none; }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 18px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+        }
+
+        /* Banner */
+        .banner-container {
+            margin: 20px 15px;
+            height: 140px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #f1f5f9;
+        }
+
+        /* Search Box - Minimalist */
+        .search-wrapper { padding: 0 15px; margin-bottom: 25px; }
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+        .search-box input {
+            border: none; outline: none; width: 100%;
+            margin-left: 10px; font-size: 0.9rem; color: #1e293b;
+        }
+
+        /* Doctor Cards - Professional Layout */
+        .doctor-card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 0 15px 15px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .card-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+
+        .doc-img-container { position: relative; }
+        .doc-img {
+            width: 60px; height: 60px;
+            border-radius: 12px; object-fit: cover;
+            background: #f1f5f9;
+        }
+        .verified-badge {
+            position: absolute; -right: 4px; -bottom: 4px;
+            background: white; color: var(--accent-blue);
+            font-size: 10px; border-radius: 50%; width: 16px; height: 16px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .doc-main-info { flex: 1; }
+        .doc-name { font-size: 1rem; font-weight: 700; color: #0f172a; line-height: 1.2; }
+        .doc-degree { font-size: 0.75rem; color: #64748b; margin-top: 2px; }
+        
+        .specialist-label {
+            display: inline-block;
+            color: var(--accent-blue);
+            font-size: 0.75rem; font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .card-bottom {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 12px; border-top: 1px solid #f8fafc;
+        }
+
+        .location-text { font-size: 0.75rem; color: #94a3b8; display: flex; align-items: center; gap: 4px; }
+
+        /* Minimalist Call Button */
+        .call-btn {
+            background: #f1f5f9; /* Subtle gray instead of bright blue */
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .call-btn:active { background: #e2e8f0; }
+
+        /* FAQ & Disclaimer */
+        .info-section { background: white; margin: 20px 15px; padding: 20px; border-radius: 16px; border: 1px solid #f1f5f9; }
+        .faq-item { padding: 10px 0; border-bottom: 1px solid #f8fafc; }
+        .faq-item b { font-size: 0.85rem; color: #334155; display: block; }
+        .faq-item p { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+
+        footer { padding: 40px 20px; text-align: center; }
+        .footer-links a { color: #94a3b8; font-size: 0.75rem; margin: 0 10px; }
+        .copy-info { font-size: 0.7rem; color: #cbd5e1; margin-top: 10px; }
+
+        .no-select { -webkit-user-select: none; user-select: none; }
+    </style>
+</head>
+<body class="no-select" oncontextmenu="return false;">
+
+    <header>
+        <h1>Doctor Directory</h1>
+    </header>
+
+    <main class="max-w-md mx-auto">
+        
+        <div class="banner-container">
+            <div id="shimmer" class="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:200%_100%] animate-[shimmer_1.5s_infinite]"></div>
+            <img id="adBanner" class="w-full h-full object-cover opacity-0 transition-opacity duration-700" 
+                 src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" 
+                 onload="document.getElementById('shimmer').style.display='none'; this.classList.remove('opacity-0')">
+        </div>
+
+        <div class="search-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search text-gray-300"></i>
+                <input type="text" id="searchInput" onkeyup="filterDoctors()" placeholder="Search name, specialist or area...">
+            </div>
+        </div>
+
+        <div id="doctorList">
+            <div class="doctor-card animate-pulse">
+                <div class="card-top">
+                    <div class="w-14 h-14 bg-gray-100 rounded-xl"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-3 bg-gray-100 rounded w-1/2"></div>
+                        <div class="h-2 bg-gray-100 rounded w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="info-section">
+            <h2 class="text-sm font-bold text-slate-800 mb-2">Help Center</h2>
+            <div class="faq-item">
+                <b>Emergency Contact</b>
+                <p>For life-threatening situations, please dial 999 immediately.</p>
+            </div>
+            <div class="faq-item">
+                <b>Verified Profiles</b>
+                <p>The checkmark indicates that the doctor's BMDC registration is on file.</p>
+            </div>
+        </section>
+
+        <p class="text-[9px] text-gray-400 text-center px-10 leading-relaxed mb-10">
+            Disclaimer: This directory is provided for informational convenience. We do not endorse specific treatments. Professional medical advice should always be sought.
+        </p>
+
+        <footer>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="copy-info">
+                &copy; 2025 HealthHub Raozan.
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        let doctorsData = [];
+
+        // Simulated Data (Ready for Google Sheet Integration)
+        async function fetchDoctorsFromSheet() {
+            const mockData = [
+                { 
+                    name: "Dr. Ahmed Ullah", 
+                    degree: "MBBS, FCPS (Medicine), MD (Cardiology)", 
+                    specialist: "Cardiology Specialist", 
+                    location: "Raozan Center", 
+                    phone: "01712345678" 
+                },
+                { 
+                    name: "Dr. Sarah Karim", 
+                    degree: "MBBS, BCS (Health), DCH (Child)", 
+                    specialist: "Pediatrics & Child Health", 
+                    location: "Noapara, Raozan", 
+                    phone: "01812345678" 
+                },
+                { 
+                    name: "Dr. Joy Chowdhury", 
+                    degree: "MBBS, MS (Orthopedic Surgery)", 
+                    specialist: "Bone & Joint Specialist", 
+                    location: "Pahartali, Raozan", 
+                    phone: "01912345678" 
+                }
+            ];
+            
+            setTimeout(() => {
+                doctorsData = mockData;
+                renderDoctors(doctorsData);
+            }, 800);
+        }
+
+        function renderDoctors(data) {
+            const container = document.getElementById('doctorList');
+            container.innerHTML = '';
+
+            data.forEach(doc => {
+                container.innerHTML += `
+                    <div class="doctor-card" data-search="${doc.name} ${doc.specialist} ${doc.location}">
+                        <div class="card-top">
+                            <div class="doc-img-container">
+                                <img src="https://ui-avatars.com/api/?name=${doc.name}&background=f8fafc&color=475569" class="doc-img">
+                                <div class="verified-badge"><i class="fas fa-check"></i></div>
+                            </div>
+                            <div class="doc-main-info">
+                                <h3 class="doc-name">${doc.name}</h3>
+                                <p class="doc-degree">${doc.degree}</p>
+                                <span class="specialist-label">${doc.specialist}</span>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <span class="location-text">
+                                <i class="fas fa-map-marker-alt"></i> ${doc.location}
+                            </span>
+                            <a href="tel:${doc.phone}" class="call-btn">
+                                <i class="fas fa-phone-alt"></i> Call
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterDoctors() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.doctor-card');
+            cards.forEach(card => {
+                const text = card.getAttribute('data-search').toLowerCase();
+                card.style.display = text.includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        window.onload = fetchDoctorsFromSheet;
+
+        // Prevent typical inspect keys
+        document.onkeydown = (e) => {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74))) return false;
+        };
+    </script>
+</body>
+</html>
