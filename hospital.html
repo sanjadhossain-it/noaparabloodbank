@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hospital List | Raozan Helpline</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/fYVnDvZS/blood-donation-logo-blood-bank-png-favpng-Vjmcn-Sqewheyp0j-S0giry-SXpt.png">
+    <title>Hospital List | Raozan Care</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/spR20sNf/ty-logo.webp">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -116,9 +116,13 @@
         .card-main { display: flex; align-items: center; gap: 15px; }
 
         .hosp-icon {
-            width: 45px; height: 45px; background: #f0fdf4; color: #16a34a;
+            width: 50px; height: 50px; background: #f0fdf4; color: #16a34a;
             border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; flex-shrink: 0;
+            font-size: 1.1rem; flex-shrink: 0; overflow: hidden;
+        }
+        
+        .hosp-icon img {
+            width: 100%; height: 100%; object-fit: cover;
         }
 
         .hosp-details h3 { margin: 0; font-size: 1rem; font-weight: 800; color: var(--primary); }
@@ -141,8 +145,6 @@
     </style>
 </head>
 <body>
-
-
 
     <div class="container">
         <div class="header-section">
@@ -187,6 +189,8 @@
             try {
                 const response = await fetch(sheetURL);
                 hospitals = await response.json();
+                // Randomize list before rendering
+                hospitals.sort(() => Math.random() - 0.5);
                 renderHospitals(hospitals);
             } catch (error) {
                 document.getElementById('hospitalList').innerHTML = '<div class="loader">Error loading data.</div>';
@@ -198,15 +202,25 @@
             listContainer.innerHTML = '';
 
             data.forEach(hosp => {
-                // IMPORTANT: Uses the link directly from your Google Sheet Column E
+                // Check if status is ON (Column G)
+                const isOn = hosp.status && hosp.status.toUpperCase() === 'ON';
+                
+                // Logic to handle click: Redirect if ON, otherwise show alert
+                const clickAction = isOn 
+                    ? `window.location.href='${hosp.link}'` 
+                    : `alert('This hospital page is currently unavailable.')`;
+
                 const card = `
-                    <div class="hospital-card" onclick="window.location.href='${hosp.link}'">
+                    <div class="hospital-card" onclick="${clickAction}">
                         <div class="card-main">
-                            <div class="hosp-icon"><i class="fas fa-hospital-alt"></i></div>
+                            <div class="hosp-icon">
+                                <img src="${hosp.logoUrl}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3304/3304567.png'">
+                            </div>
                             <div class="hosp-details">
                                 <h3>${hosp.name}</h3>
                                 <p><i class="fas fa-stethoscope"></i> ${hosp.speciality}</p>
                                 <p><i class="fas fa-map-marker-alt"></i> ${hosp.location}</p>
+                                ${!isOn ? '<p style="color:var(--accent); font-size:0.7rem;">(Offline)</p>' : ''}
                             </div>
                         </div>
                         <div style="margin-top:10px;">
