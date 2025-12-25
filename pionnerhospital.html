@@ -7,12 +7,14 @@
 
     <title>Pioneer Hospital and Diagnostic Center LTD | Premium Healthcare Noapara</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Ndrx7JS9/pionnerlogo.webp">
-    
-    <meta name="description" content="Official portal for Pioneer Hospital and Diagnostic Center LTD. Specialized doctors, advanced diagnostics, and 24/7 emergency services in Raozan, Noapara.">
+
+    <meta name="description"
+        content="Official portal for Pioneer Hospital and Diagnostic Center LTD. Specialized doctors, advanced diagnostics, and 24/7 emergency services in Raozan, Noapara.">
     <meta name="keywords" content="Pioneer Hospital, Noapara Hospital, Hospital in Raozan, Diagnostic Center Raozan">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -126,8 +128,16 @@
             transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        .slide { width: 33.3333%; height: 100%; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide {
+            width: 33.3333%;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .slider-dots {
             position: absolute;
@@ -147,7 +157,11 @@
             transition: 0.3s;
         }
 
-        .dot.active { background: white; width: 20px; border-radius: 10px; }
+        .dot.active {
+            background: white;
+            width: 20px;
+            border-radius: 10px;
+        }
 
         /* --- ACTION HUB --- */
         .action-hub {
@@ -173,8 +187,16 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        .action-card i { font-size: 1.2rem; color: var(--primary); }
-        .action-card span { font-weight: 700; font-size: 0.85rem; color: var(--text-main); }
+        .action-card i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .action-card span {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
 
         .section-label {
             padding: 30px 20px 15px;
@@ -192,7 +214,9 @@
             scrollbar-width: none;
         }
 
-        .horizontal-scroll::-webkit-scrollbar { display: none; }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
 
         .diag-pill {
             min-width: 105px;
@@ -205,12 +229,31 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .diag-pill i { font-size: 1.4rem; color: var(--accent); margin-bottom: 8px; display: block; }
-        .diag-pill span { font-size: 0.75rem; font-weight: 700; color: var(--text-main); display: block; }
-        .diag-pill .diag-call { font-size: 0.6rem; color: var(--text-muted); margin-top: 4px; }
+        .diag-pill i {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .diag-pill span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .diag-pill .diag-call {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
 
         /* --- SEARCH --- */
-        .search-section { padding: 0 20px 20px; }
+        .search-section {
+            padding: 0 20px 20px;
+        }
+
         .search-box-wrapper {
             background: var(--surface);
             border-radius: 16px;
@@ -234,7 +277,9 @@
         }
 
         /* --- PERFECTLY ALIGNED DOCTOR CARDS --- */
-        .doctor-container { padding: 0 20px 30px; }
+        .doctor-container {
+            padding: 0 20px 30px;
+        }
 
         .doc-card {
             background: var(--card-grad);
@@ -247,8 +292,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .doc-header {
@@ -285,10 +337,19 @@
             border: 2px solid white;
         }
 
-        .dot-available { background: var(--success); box-shadow: 0 0 5px var(--success); }
-        .dot-away { background: var(--danger); }
+        .dot-available {
+            background: var(--success);
+            box-shadow: 0 0 5px var(--success);
+        }
 
-        .doc-meta { flex: 1; }
+        .dot-away {
+            background: var(--danger);
+        }
+
+        .doc-meta {
+            flex: 1;
+        }
+
         .doc-meta h3 {
             margin: 0 0 4px 0;
             font-size: 1.1rem;
@@ -303,10 +364,23 @@
             gap: 2px;
         }
 
-        .doc-degree { font-size: 0.8rem; color: var(--text-main); font-weight: 600; line-height: 1.3; }
-        .doc-collage { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+        .doc-degree {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.3;
+        }
 
-        .doc-specialty-wrapper { margin-top: 6px; }
+        .doc-collage {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .doc-specialty-wrapper {
+            margin-top: 6px;
+        }
+
         .doc-specialty-tag {
             display: inline-block;
             font-size: 0.65rem;
@@ -338,7 +412,11 @@
             letter-spacing: 0.3px;
         }
 
-        .s-item span { font-size: 0.8rem; font-weight: 700; color: var(--text-main); }
+        .s-item span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
 
         .btn-booking {
             margin-top: 15px;
@@ -376,10 +454,13 @@
         }
 
         .f-link-card .icon-box {
-            width: 40px; height: 40px;
+            width: 40px;
+            height: 40px;
             background: white;
             border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--primary);
             box-shadow: 0 3px 8px rgba(0, 119, 182, 0.1);
         }
@@ -394,6 +475,33 @@
             color: white;
             text-decoration: none;
             margin: 25px 0;
+        }
+
+        /* Ensure the meta container can wrap text */
+        .doc-meta {
+            flex: 1;
+            min-width: 0;
+            /* Important for flex child text wrapping */
+        }
+
+        /* Allow headers and long text strings to break */
+        .doc-meta h3,
+        .doc-degree,
+        .doc-collage {
+            white-space: normal;
+            /* Allows natural line breaks */
+            overflow-wrap: break-word;
+            /* Breaks very long words if necessary */
+            word-break: break-word;
+            line-height: 1.4;
+            /* Adds breathing room between lines */
+        }
+
+        /* Ensure specialty tags wrap if there are multiple or long ones */
+        .doc-specialty-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
         }
     </style>
 </head>
@@ -443,10 +551,18 @@
 
     <div id="diagnostics" class="section-label">Diagnostic Excellence</div>
     <div class="horizontal-scroll">
-        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span><div class="diag-call">Tests Price</div></a>
-        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span><div class="diag-call">Tests Price</div></a>
-        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span><div class="diag-call">Tests Price</div></a>
-        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span><div class="diag-call">Tests Price</div></a>
+        <a href="#" class="diag-pill"><i class="fas fa-vial"></i><span>Pathology</span>
+            <div class="diag-call">Tests Price</div>
+        </a>
+        <a href="#" class="diag-pill"><i class="fas fa-x-ray"></i><span>Digital X-Ray</span>
+            <div class="diag-call">Tests Price</div>
+        </a>
+        <a href="#" class="diag-pill"><i class="fas fa-heart-pulse"></i><span>Digital ECG</span>
+            <div class="diag-call">Tests Price</div>
+        </a>
+        <a href="#" class="diag-pill"><i class="fas fa-baby"></i><span>4D USG</span>
+            <div class="diag-call">Tests Price</div>
+        </a>
     </div>
 
     <div id="doctors" class="section-label">Find Your Specialist</div>
@@ -483,17 +599,20 @@
     <footer class="site-footer">
         <div style="text-align: center; margin-bottom: 30px;">
             <span style="font-size: 1.3rem; font-weight: 800; color: var(--primary);">Pioneer Hospital</span>
-            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Trusted Healthcare Partner since 2010</span>
+            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Trusted
+                Healthcare Partner since 2010</span>
         </div>
 
         <a href="tel:008801961418137" class="f-link-card">
             <div class="icon-box"><i class="fas fa-headset"></i></div>
-            <div class="content"><b style="font-size: 0.9rem; display:block;">Hotline</b><span style="font-size: 0.75rem; color: var(--text-muted);">+880 1961418137</span></div>
+            <div class="content"><b style="font-size: 0.9rem; display:block;">Hotline</b><span
+                    style="font-size: 0.75rem; color: var(--text-muted);">+880 1961418137</span></div>
         </a>
 
         <a href="#" class="f-link-card">
             <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
-            <div class="content"><b style="font-size: 0.9rem; display:block;">Our Location</b><span style="font-size: 0.75rem; color: var(--text-muted);">Patherhat, Noapara, Raozan</span></div>
+            <div class="content"><b style="font-size: 0.9rem; display:block;">Our Location</b><span
+                    style="font-size: 0.75rem; color: var(--text-muted);">Patherhat, Noapara, Raozan</span></div>
         </a>
 
         <a href="tel:008801511772222" class="emergency-banner">
@@ -501,19 +620,24 @@
                 <span style="font-size: 0.65rem; opacity: 0.9; text-transform: uppercase;">24/7 Rapid Response</span>
                 <div style="font-size: 1rem; font-weight: 800;">Emergency Serial</div>
             </div>
-            <div style="background: rgba(255, 255, 255, 0.2); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+            <div
+                style="background: rgba(255, 255, 255, 0.2); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                 <i class="fas fa-arrow-right"></i>
             </div>
         </a>
 
         <div style="display: flex; justify-content: center; gap: 25px; margin: 25px 0;">
-            <a href="https://www.facebook.com/pioneerhospitalctg/" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/8801817751509" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:pioneerhospitalltdctg@gmail.com" style="color: var(--primary); font-size: 1.2rem;"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/pioneerhospitalctg/" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/8801817751509" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="mailto:pioneerhospitalltdctg@gmail.com" style="color: var(--primary); font-size: 1.2rem;"><i
+                    class="fas fa-envelope"></i></a>
         </div>
 
         <div style="text-align: center; padding-top: 20px; border-top: 1px solid #f1f5f9;">
-            <p style="font-size: 0.7rem; color: var(--text-muted);">© 2025 Pioneer Hospital LTD. All rights reserved.</p>
+            <p style="font-size: 0.7rem; color: var(--text-muted);">© 2025 Pioneer Hospital LTD. All rights reserved.
+            </p>
         </div>
     </footer>
 
@@ -572,8 +696,8 @@
 
                 if (result.success) {
                     let data = shuffleArray(result.data);
-                    const filteredData = (category === 'All') 
-                        ? data 
+                    const filteredData = (category === 'All')
+                        ? data
                         : data.filter(doc => String(doc.category).toUpperCase() === category.toUpperCase());
 
                     renderDoctors(filteredData);
@@ -590,7 +714,7 @@
             doctors.forEach(doc => {
                 const icon = getDoctorIcon(doc.category);
                 const dotClass = (doc.status && doc.status.toLowerCase() === 'available') ? 'dot-available' : 'dot-away';
-                
+
                 const card = document.createElement('article');
                 card.className = 'doc-card';
                 card.innerHTML = `
@@ -621,10 +745,11 @@
         }
 
         window.onload = () => fetchAndFilter('All');
-        
+
         document.addEventListener('keydown', e => {
-            if (e.ctrlKey && ['c','v','u','a'].includes(e.key)) e.preventDefault();
+            if (e.ctrlKey && ['c', 'v', 'u', 'a'].includes(e.key)) e.preventDefault();
         });
     </script>
 </body>
+
 </html>
